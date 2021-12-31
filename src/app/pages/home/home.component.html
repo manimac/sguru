@@ -1,45 +1,57 @@
-
-<!-- ==========Banner-Section========== -->
-<section class="banner-section">
+<section class="banner-section home2">
     <img class="img1 wow fadeInLeft" src="assets/images/banner/aimg1.png" alt="">
     <img class="img2 wow fadeInRight" src="assets/images/banner/aimg2.png" alt="">
     <div class="container">
-      <div class="row">
-        <div class="col-xl-4 col-lg-5">
-          <h1 class="main-title wow fadeInLeft">
-            Find Love
-            Your Life
-          </h1>
-          <div class="join-now-box wow fadeInUp">
-            <div class="single-option">
-                <div class="mr-3">
-                  <input type="text" placeholder="First Name" class="form-control">
-                </div>
-                <div>
-                  <input type="text" placeholder="Last Name" class="form-control">
-                </div>
+        <div class="row">
+            <div class="col-xl-4 col-lg-5">
+                <h1 class="main-title wow fadeInLeft">
+                    Find Love
+                    Your Life
+                </h1>
+                <div class="join-now-box wow fadeInUp" *ngIf="joinNow">
+                    <div class="single-option">
+                        <div class="mr-3">
+                          <input type="text" placeholder="First Name" class="form-control">
+                        </div>
+                        <div>
+                          <input type="text" placeholder="Last Name" class="form-control">
+                        </div>
+                    </div>
+                    <div class="single-option">
+                      <div class="option">
+                        <div class="s-input mr-3">
+                          <input type="radio" name="gender" id="male"><label for="male">Male</label>
+                        </div>
+                        <div class="s-input">
+                          <input type="radio" name="gender" id="female"><label for="female">Female</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="single-option">
+                      <input type="text" placeholder="Mobile Numebr" class="form-control">
+                  </div>
+                    <div class="joun-button mt-4">
+                      <button class="custom-button" (click)="showVerifySection()">Join Now!</button>
+                    </div>
+                  </div>
+                  <div class="join-now-box wow fadeInUp" *ngIf="verifyOtp">
+                    <div class="single-option">
+                        <input type="text" placeholder="OTP" class="form-control">
+                    </div>
+                    <div class="single-option">
+                          <input type="text" placeholder="Create Password" class="form-control">
+                    </div>
+                    <div class="single-option">
+                          <input type="text" placeholder="Re-Enter Password" class="form-control">
+                    </div>
+                    <div class="joun-button mt-4">
+                      <button class="custom-button" routerLink="/profile">Verify</button>
+                    </div>
+                  </div>
             </div>
-            <div class="single-option">
-              <div class="option">
-                <div class="s-input mr-3">
-                  <input type="radio" name="gender" id="male"><label for="male">Male</label>
-                </div>
-                <div class="s-input">
-                  <input type="radio" name="gender" id="female"><label for="female">Female</label>
-                </div>
-              </div>
-            </div>
-            <div class="single-option">
-              <input type="text" placeholder="Mobile Numebr" class="form-control">
-          </div>
-            <div class="joun-button mt-4">
-              <button class="custom-button">Join Now!</button>
-            </div>
-          </div>
         </div>
-      </div>
     </div>
-  </section>
+</section>
   <!-- ==========Banner-Section========== -->
   
   <!-- ==========Feature-Section========== -->

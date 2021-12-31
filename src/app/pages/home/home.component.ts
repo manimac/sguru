@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
+  joinNow: boolean = true;
+  verifyOtp: boolean = false;
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  showVerifySection(){
+    this.joinNow = false;
+    this.verifyOtp = true;
   }
 
 }
