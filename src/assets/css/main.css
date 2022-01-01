@@ -1528,7 +1528,7 @@ input[type=submit] {
   margin-top: 55px;
   position: relative;
 }
-.footer-section .newslater-section .newslater-wrapper .newslater-form input {
+.footer-section .newslater-section .newslater-wrapper .newslater-form input, .home2 .form-control {
   background: #aa0101;
   border-radius: 50px;
   border: 1px solid rgba(255, 255, 255, 0.3);
@@ -8882,3 +8882,77 @@ input[type=submit] {
   color: #fff;
   padding: 12px 10px 12px;
 }
+
+/*New Theme CSS*/
+.newslater-section {
+  display: none;
+}
+
+.footer-section .hr {
+  display: none;
+}
+
+.footer-section {
+  padding-top: 275px;
+}
+
+.footer-section .shape3 {
+  width: 500px;
+}
+.header-wrapper .menu > li > a::before {
+  width: 100% !important;
+  left: 0;
+}
+.footer-section .footer-links .link-wrapper .f-solial-links li a:hover {
+  color: #f8f200;
+}
+.feature-section {
+  padding: 100px 0;
+}
+.feature-section .main-content-area .left-image::before {
+  background-color: transparent;
+}
+.section-header .sub-title {
+  color: #9a0000;
+}
+.banner-section.home2 {
+  background: none !important;
+  background-color: #d50000a8 !important;
+}
+.user-profile > a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.user-profile > a span {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  color: #9a0000;
+}
+.banner-section .join-now-box {
+  border-radius: 10px;
+  background-color: #ffffffb8;
+}
+.home2 .form-control {
+  background-color: transparent;
+  border-color: #9a0000;
+  padding: 0 15px;
+  outline: none !important;
+  box-shadow: none !important;
+  color: #000;
+}
+.banner-section .join-now-box .single-option .option label::before {
+  border-color: #9a0000;
+}
+.banner-section .join-now-box .single-option .option input:checked ~ label::before {
+  color: #9a0000;
+}
+.menu-item-has-children > a::after {
+  margin-left: 10px;
+}
+/*New Theme CSS*/
