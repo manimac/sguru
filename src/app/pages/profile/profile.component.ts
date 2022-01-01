@@ -69,7 +69,7 @@ export class ProfileComponent implements OnInit {
     'Widow',
     'Divorcee'
   ];
-  basicDetailsSection: boolean = false;
+  basicDetailsSection: boolean = true;
   careerSection: boolean = false;
   healthSection: boolean = false;
   preferenceSection: boolean = false;
@@ -78,7 +78,6 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.initialize();
-    this.showBasicDetails();
   }
 
   initialize() {
@@ -124,44 +123,49 @@ export class ProfileComponent implements OnInit {
     )
   }
 
-  showBasicDetails(){
+  showBasicDetails(element: HTMLElement){
     this.basicDetailsSection = true;
     this.careerSection = false;
     this.healthSection = false;
     this.preferenceSection = false;
     this.paymentSection = false;
+    element.scrollIntoView();
   }
 
-  showCareer(){
+  showCareer(element: HTMLElement){
     this.basicDetailsSection = false;
     this.careerSection = true;
     this.healthSection = false;
     this.preferenceSection = false;
     this.paymentSection = false;
+    element.scrollIntoView();
   }
 
-  showHealth(){
+  showHealth(element: HTMLElement){
     this.basicDetailsSection = false;
     this.careerSection = false;
     this.healthSection = true;
     this.preferenceSection = false;
     this.paymentSection = false;
+    element.scrollIntoView();
   }
 
-  showPreference(){
+  showPreference(element: HTMLElement){
     this.basicDetailsSection = false;
     this.careerSection = false;
     this.healthSection = false;
     this.preferenceSection = true;
     this.paymentSection = false;
+    element.scrollIntoView();
   }
 
-  showPayment(){
+  showPayment(element: HTMLElement){
     this.basicDetailsSection = false;
     this.careerSection = false;
     this.healthSection = false;
     this.preferenceSection = false;
     this.paymentSection = true;
+    element.scrollIntoView();
   }
 
 }

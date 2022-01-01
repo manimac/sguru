@@ -21,7 +21,7 @@
 
 <!-- ========= Profile Section Start -->
 
-<section class="user-setting-section">
+<section class="user-setting-section" #profileView>
     <div class="container">
         <div class="row">
             <div class="col-xl-4 col-md-5">
@@ -46,19 +46,19 @@
                             <div class="card-body">
                                 <ul class="links">
                                     <li>
-                                        <a [ngClass]="{'active': basicDetailsSection}" (click)="showBasicDetails()">Basic Details</a>
+                                        <a [ngClass]="{'active': basicDetailsSection}" (click)="showBasicDetails(profileView)">Basic Details</a>
                                     </li>
                                     <li>
-                                        <a [ngClass]="{'active': careerSection}" (click)="showCareer()">Career</a>
+                                        <a [ngClass]="{'active': careerSection}" (click)="showCareer(profileView)">Career</a>
                                     </li>
                                     <li>
-                                        <a [ngClass]="{'active': healthSection}" (click)="showHealth()">Health</a>
+                                        <a [ngClass]="{'active': healthSection}" (click)="showHealth(profileView)">Health</a>
                                     </li>
                                     <li>
-                                        <a [ngClass]="{'active': preferenceSection}" (click)="showPreference()">Preference</a>
+                                        <a [ngClass]="{'active': preferenceSection}" (click)="showPreference(profileView)">Preference</a>
                                     </li>
                                     <li>
-                                        <a [ngClass]="{'active': paymentSection}" (click)="showPayment()">Payment page</a>
+                                        <a [ngClass]="{'active': paymentSection}" (click)="showPayment(profileView)">Payment page</a>
                                     </li>
                                 </ul>
                             </div>
@@ -154,7 +154,6 @@
                                     <div class="p-inner-content">
                                         <div class="profile-img">
                                             <img src="assets/images/profile/profile-user.png" alt="">
-                                            <div class="active-online"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -295,6 +294,13 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="row">                            
+                            <div class="col-md-12">
+                                <div class="buttons">
+                                    <button type="submit" class="custom-button" (click)="showCareer(profileView)">Next</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="input-info-box mt-30" *ngIf="careerSection">
@@ -399,6 +405,14 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="row">                            
+                            <div class="col-md-12">
+                                <div class="buttons">
+                                    <button type="submit" class="custom-button" (click)="showBasicDetails(profileView)">Back</button>
+                                    <button type="submit" class="custom-button ml-3" (click)="showHealth(profileView)">Next</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="input-info-box mt-30" *ngIf="healthSection">
@@ -472,14 +486,12 @@
                                         formControlName="anyHealthIssues" autocomplete="off"></textarea>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="my-input-box">
-                                    <label>Nationality</label>
-                                    <select class="form-control" formControlName="nationality">
-                                        <option value="" disabled>Select Nationality</option>
-                                        <option value="Indian">Indian</option>
-                                        <option value="Others">Others</option>
-                                    </select>
+                        </div>
+                        <div class="row">                            
+                            <div class="col-md-12">
+                                <div class="buttons">
+                                    <button type="submit" class="custom-button" (click)="showCareer(profileView)">Back</button>
+                                    <button type="submit" class="custom-button ml-3" (click)="showPreference(profileView)">Next</button>
                                 </div>
                             </div>
                         </div>
@@ -533,6 +545,14 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="row">                            
+                            <div class="col-md-12">
+                                <div class="buttons">
+                                    <button type="submit" class="custom-button" (click)="showHealth(profileView)">Back</button>
+                                    <button type="submit" class="custom-button ml-3" (click)="showPayment(profileView)">Next</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="input-info-box mt-30" *ngIf="paymentSection">
@@ -544,7 +564,7 @@
                             <div class="col-md-6">
                                 <div class="my-input-box">
                                     <label for="">Email</label>
-                                    <input type="text" class="form-control" placeholder="Email" formControlName="Email"
+                                    <input type="text" class="form-control" placeholder="Email" formControlName="email"
                                         autocomplete="off">
                                 </div>
                             </div>
@@ -570,10 +590,15 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="row">                            
+                            <div class="col-md-12">
+                                <div class="buttons">
+                                    <button type="submit" class="custom-button" (click)="showPreference(profileView)">Back</button>
+                                    <button type="submit" class="custom-button ml-3">Save</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="buttons  mt-30">
-                    <button type="submit" class="custom-button">Save Changes</button>
                 </div>
             </div>
         </div>
