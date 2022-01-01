@@ -8955,4 +8955,10 @@ input[type=submit] {
 .menu-item-has-children > a::after {
   margin-left: 10px;
 }
+.logo a .scrolled, .header-active .logo a .not-scrolled {
+  display: none;
+}
+.header-active .logo a .scrolled {
+  display: block;
+}
 /*New Theme CSS*/
