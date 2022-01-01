@@ -1,0 +1,4 @@
+.joun-button :disabled{
+    background: #e15657;
+    cursor: inherit;
+}

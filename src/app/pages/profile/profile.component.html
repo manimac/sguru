@@ -1,7 +1,7 @@
 <div class="search-overlay">
     <div class="close"><i class="fas fa-times"></i></div>
     <form action="#">
-        <input type="text"  placeholder="Write what you want..">
+        <input type="text" placeholder="Write what you want..">
     </form>
 </div>
 <!-- ==========Header-Section========== -->
@@ -27,327 +27,546 @@
             <div class="col-xl-4 col-md-5">
                 <div class="accordion" id="accordionExample">
                     <div class="card">
-                      <div class="card-header" id="headingOne">
-                          <button class="" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                            <div class="icon">
-                                <i class="fas fa-user"></i>
-                            </div> 
-                            <span>My Profile</span>
-                            <div class="t-icon">
-                                <i class="fas fa-plus"></i>
-                                <i class="fas fa-minus"></i>
-                            </div>
-                          </button>
-                      </div>
-                  
-                      <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-                        <div class="card-body">
-                          <ul class="links">
-                              <li>
-                                  <a  class="active" href="user-setting.html">Basic Details</a>
-                              </li>
-                              <li>
-                                  <a href="user-notification.html">Career</a>
-                              </li>
-                              <li>
-                                  <a href="user-friend-request.html">Health</a>
-                              </li>
-                              <li>
-                                  <a href="user-badges.html">Preference</a>
-                              </li>
-                              <li>
-                                  <a href="user-badges.html">Payment page</a>
-                              </li>
-                          </ul>
+                        <div class="card-header" id="headingOne">
+                            <button class="" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+                                aria-controls="collapseOne">
+                                <div class="icon">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <span>My Profile</span>
+                                <div class="t-icon">
+                                    <i class="fas fa-plus"></i>
+                                    <i class="fas fa-minus"></i>
+                                </div>
+                            </button>
                         </div>
-                      </div>
+
+                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                            data-parent="#accordionExample">
+                            <div class="card-body">
+                                <ul class="links">
+                                    <li>
+                                        <a [ngClass]="{'active': basicDetailsSection}" (click)="showBasicDetails()">Basic Details</a>
+                                    </li>
+                                    <li>
+                                        <a [ngClass]="{'active': careerSection}" (click)="showCareer()">Career</a>
+                                    </li>
+                                    <li>
+                                        <a [ngClass]="{'active': healthSection}" (click)="showHealth()">Health</a>
+                                    </li>
+                                    <li>
+                                        <a [ngClass]="{'active': preferenceSection}" (click)="showPreference()">Preference</a>
+                                    </li>
+                                    <li>
+                                        <a [ngClass]="{'active': paymentSection}" (click)="showPayment()">Payment page</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="card">
+                        <div class="card-header" id="headingTwo">
+                            <button class="collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo"
+                                aria-expanded="false" aria-controls="collapseTwo">
+                                <div class="icon">
+                                    <i class="fas fa-cogs"></i>
+                                </div>
+                                <span>
+                                    Account
+                                </span>
+                                <div class="t-icon">
+                                    <i class="fas fa-plus"></i>
+                                    <i class="fas fa-minus"></i>
+                                </div>
+                            </button>
+                        </div>
+                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+                            data-parent="#accordionExample">
+                            <div class="card-body">
+                                <ul class="links">
+                                    <li>
+                                        <a href="user-account-info.html">Account Info</a>
+                                    </li>
+                                    <li>
+                                        <a href="user-change-pass.html">Change Password</a>
+                                    </li>
+                                    <li>
+                                        <a href="user-privicy-setting.html">Privacy Settings</a>
+                                    </li>
+                                    <li>
+                                        <a href="user-verify-account.html">Verified account</a>
+                                    </li>
+                                    <li>
+                                        <a href="user-close-account.html">Close Account</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                     <div class="card">
-                      <div class="card-header" id="headingTwo">
-                          <button class="collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                            <div class="icon">
-                                <i class="fas fa-cogs"></i>
-                            </div> 
-                            <span>
-                                Account
-                            </span>
-                            <div class="t-icon">
-                                <i class="fas fa-plus"></i>
-                                <i class="fas fa-minus"></i>
-                            </div>
-                          </button>
-                      </div>
-                      <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                        <div class="card-body">
-                            <ul class="links">
-                                <li>
-                                    <a href="user-account-info.html">Account Info</a>
-                                </li>
-                                <li>
-                                    <a href="user-change-pass.html">Change Password</a>
-                                </li>
-                                <li>
-                                    <a href="user-privicy-setting.html">Privacy Settings</a>
-                                </li>
-                                <li>
-                                    <a href="user-verify-account.html">Verified account</a>
-                                </li>
-                                <li>
-                                    <a href="user-close-account.html">Close Account</a>
-                                </li>
-                            </ul>
+                        <div class="card-header" id="headingThree">
+                            <button class="collapsed" type="button" data-toggle="collapse" data-target="#collapseThree"
+                                aria-expanded="false" aria-controls="collapseThree">
+                                <div class="icon">
+                                    <i class="far fa-credit-card"></i>
+                                </div>
+                                <span>
+                                    Subscriptions & Payments
+                                </span>
+                                <div class="t-icon">
+                                    <i class="fas fa-plus"></i>
+                                    <i class="fas fa-minus"></i>
+                                </div>
+                            </button>
                         </div>
-                      </div>
-                    </div>
-                    <div class="card">
-                      <div class="card-header" id="headingThree">
-                          <button class="collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                            <div class="icon">
-                                <i class="far fa-credit-card"></i>
-                            </div> 
-                            <span>
-                                Subscriptions & Payments
-                            </span>
-                            <div class="t-icon">
-                                <i class="fas fa-plus"></i>
-                                <i class="fas fa-minus"></i>
+                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
+                            data-parent="#accordionExample">
+                            <div class="card-body">
+                                <ul class="links">
+                                    <li>
+                                        <a href="user-billing.html">Billing & Payout</a>
+                                    </li>
+                                    <li>
+                                        <a href="user-plan.html">Upgrade Membership Plan</a>
+                                    </li>
+                                    <li>
+                                        <a href="user-purchase.html">View Purchase History</a>
+                                    </li>
+                                </ul>
                             </div>
-                          </button>
-                      </div>
-                      <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-                        <div class="card-body">
-                            <ul class="links">
-                                <li>
-                                    <a href="user-billing.html">Billing & Payout</a>
-                                </li>
-                                <li>
-                                    <a href="user-plan.html">Upgrade Membership Plan</a>
-                                </li>
-                                <li>
-                                    <a href="user-purchase.html">View Purchase History</a>
-                                </li>
-                            </ul>
                         </div>
-                      </div>
-                    </div>
-                  </div>
+                    </div> -->
+                </div>
             </div>
             <div class="col-xl-8 col-md-7 ">
                 <div class="page-title">
                     Profile Info
                 </div>
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="profile-about-box">
-                            <div class="top-bg"></div>
-                            <div class="p-inner-content">
-                                <div class="profile-img">
-                                    <img src="assets/images/profile/profile-user.png" alt="">
-                                    <div class="active-online"></div>
+                <div class="input-info-box mt-30" *ngIf="basicDetailsSection">
+                    <div class="header">
+                        Basic Details
+                    </div>
+                    <div class="content" [formGroup]="basicDetailsFormGroup">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="profile-about-box">
+                                    <div class="top-bg"></div>
+                                    <div class="p-inner-content">
+                                        <div class="profile-img">
+                                            <img src="assets/images/profile/profile-user.png" alt="">
+                                            <div class="active-online"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="up-photo-card mb-30">
+                                    <div class="icon">
+                                        <i class="fas fa-user"></i>
+                                    </div>
+                                    <div class="content">
+                                        <h4>
+                                            Change Avatar
+                                        </h4>
+                                        <span>
+                                            120x120p size minimum
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="up-photo-card mb-30">
-                            <div class="icon">
-                                <i class="fas fa-user"></i>
+                        <div class="row mt-2">
+                            <div class="col-md-6">
+                                <div class="my-input-box">
+                                    <label for="">First Name</label>
+                                    <input type="text" placeholder="First Name" formControlName="firstname">
+                                </div>
                             </div>
-                            <div class="content">
-                                <h4>
-                                    Change Avatar
-                                </h4>
-                                <span>
-                                    120x120p size minimum
-                                </span>
+                            <div class="col-md-6">
+                                <div class="my-input-box">
+                                    <label for="">Last Name</label>
+                                    <input type="text" placeholder="Last Name" formControlName="lastname">
+                                </div>
                             </div>
-                        </div>
-                        <div class="up-photo-card">
-                            <div class="icon">
-                                <i class="fas fa-image"></i>
+                            <div class="col-md-6">
+                                <div class="my-input-box">
+                                    <label for="">Gender</label>
+                                    <select formControlName="gender">
+                                        <option value="" disabled selected>Select Gender</option>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                    </select>
+                                </div>
                             </div>
-                            <div class="content">
-                                <h4>
-                                    Change Cover
-                                </h4>
-                                <span>
-                                    1200x300p size minimum
-                                </span>
+                            <div class="col-md-6">
+                                <div class="my-input-box">
+                                    <label for="">Mobile Number</label>
+                                    <input type="text" placeholder="Mobile Number" formControlName="phone"
+                                        appAcceptNumberOnly>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="my-input-box">
+                                    <label for="">DOB</label>
+                                    <input type="date" placeholder="DOB" formControlName="dob">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="my-input-box">
+                                    <label for="">Time of Birth</label>
+                                    <input type="time" placeholder="Time of Birth" formControlName="timeOfBirth">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="my-input-box">
+                                    <label for="">Place of Birth</label>
+                                    <input type="text" placeholder="Place of Birth" formControlName="placeOfBirth">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="my-input-box">
+                                    <label for="">Created By</label>
+                                    <select formControlName="relationship">
+                                        <option value="" disabled selected>Select</option>
+                                        <option value="Self">Self</option>
+                                        <option value="Parent">Parent</option>
+                                        <option value="Friend">Friend</option>
+                                        <option value="Relative">Relative</option>
+                                        <option value="Sister">Sister</option>
+                                        <option value="Brother">Brother</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="my-input-box">
+                                    <label for="">Birth Star</label>
+                                    <select class="form-control" formControlName="birthstarid">
+                                        <option value="" disabled>Select Birth Star</option>
+                                        <option *ngFor="let bs of birthstarLists" value="{{bs.id}}">
+                                            {{bs.description}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="my-input-box">
+                                    <label for="">Birth Rasi</label>
+                                    <select class="form-control" formControlName="birthrasiid">
+                                        <option value="" disabled>Select Birth Rasi</option>
+                                        <option *ngFor="let br of birthrasiLists" value="{{br.id}}">
+                                            {{br.description}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="my-input-box">
+                                    <label for="">Mother Tongue</label>
+                                    <select class="form-control" formControlName="languageid">
+                                        <option value="" disabled>Select Mother Tongue</option>
+                                        <option *ngFor="let language of languageLists" value="{{language.id}}">
+                                            {{language.description}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="my-input-box">
+                                    <label for="">Religion</label>
+                                    <select class="form-control" formControlName="religionid">
+                                        <option value="" disabled>Select Religion</option>
+                                        <option *ngFor="let religion of religionLists" value="{{religion.id}}">
+                                            {{religion.description}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="my-input-box">
+                                    <label for="">Caste</label>
+                                    <select class="form-control" formControlName="casteid">
+                                        <option value="" disabled>Select Caste</option>
+                                        <option *ngFor="let caste of casteLists" value="{{caste.id}}">
+                                            {{caste.description}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="my-input-box">
+                                    <label for="">Sub caste</label>
+                                    <input type="text" class="form-control" placeholder="Sub caste"
+                                        formControlName="subCaste" autocomplete="off">
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="input-info-box mt-30">
+                <div class="input-info-box mt-30" *ngIf="careerSection">
                     <div class="header">
-                        About your Profile
+                        Career
                     </div>
-                    <div class="content">
+                    <div class="content" [formGroup]="careerFormGroup">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="my-input-box">
-                                    <label for="">Profile Name</label>
-                                    <input type="text" placeholder="Profile Name">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="my-input-box">
-                                    <label for="">Public Email</label>
-                                    <input type="text" placeholder="Public Email">
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="my-input-box">
-                                    <textarea name="" placeholder="Write a little description about you..."></textarea>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="my-input-box">
-                                    <label for="">Country</label>
-                                    <select name="" id="">
-                                        <option value="" disabled selected>Select Country</option>
-                                        <option value="">United State</option>
+                                    <label>Maritial Status</label>
+                                    <select class="form-control" formControlName="maritialStatus">
+                                        <option value="" disabled>Select Maritial Status</option>
+                                        <option *ngFor="let maritial of maritialStatusLists" value="{{maritial}}">
+                                            {{maritial}}</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="my-input-box">
-                                    <label for="">City</label>
-                                    <select name="" id="">
-                                        <option value="" disabled selected>Select City</option>
-                                        <option value="">New Work</option>
+                                    <label>City</label>
+                                    <input type="text" class="form-control" placeholder="City" formControlName="city"
+                                        autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="my-input-box">
+                                    <label>State</label>
+                                    <input type="text" class="form-control" placeholder="State" formControlName="state"
+                                        autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="my-input-box">
+                                    <label>National</label>
+                                    <input type="text" class="form-control" placeholder="National"
+                                        formControlName="national" autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="my-input-box">
+                                    <label>Pincode</label>
+                                    <input type="text" class="form-control" placeholder="Pincode"
+                                        formControlName="pincode" autocomplete="off" appAcceptNumberOnly>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="my-input-box">
+                                    <label>Educational</label>
+                                    <select class="form-control" formControlName="educational">
+                                        <option value="" disabled>Select Educational</option>
+                                        <option value="Matriculation">Matriculation</option>
+                                        <option value="Graduate">Graduate</option>
+                                        <option value="Post Graduate">Post Graduate</option>
+                                        <option value="Professional">Professional</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="my-input-box">
-                                    <label for="">Birthday</label>
-                                    <input type="date" >
+                                    <label>Educational Option</label>
+                                    <input type="text" class="form-control" placeholder="Educational Option"
+                                        formControlName="educationalOption" autocomplete="off">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="my-input-box">
-                                    <label for="">Occupation</label>
-                                    <input type="text" placeholder="Occupation">
+                                    <label>Occupation</label>
+                                    <input type="text" class="form-control" placeholder="Occupation"
+                                        formControlName="occupation" autocomplete="off">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="my-input-box">
-                                    <label for="">Status</label>
-                                    <select name="" id="">
-                                        <option value="">In a Relationship</option>
-                                        <option value="">Single</option>
-                                        <option value="">Marid</option>
+                                    <label>Career</label>
+                                    <input type="text" class="form-control" placeholder="Career"
+                                        formControlName="career" autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="my-input-box">
+                                    <label>Annual Income</label>
+                                    <input type="text" class="form-control" placeholder="Annual Income"
+                                        formControlName="annualincome" autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="my-input-box">
+                                    <label>Career</label>
+                                    <input type="text" class="form-control" placeholder="Career"
+                                        formControlName="career" autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="my-input-box">
+                                    <label>Nationality</label>
+                                    <select class="form-control" formControlName="nationality">
+                                        <option value="" disabled>Select Nationality</option>
+                                        <option value="Indian">Indian</option>
+                                        <option value="Others">Others</option>
                                     </select>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="my-input-box">
-                                    <label for="">Birthplace</label>
-                                    <input type="text" placeholder="Birthplace">
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="input-info-box mt-30">
+                <div class="input-info-box mt-30" *ngIf="healthSection">
                     <div class="header">
-                        Interests
+                        Health
                     </div>
-                    <div class="content">
+                    <div class="content" [formGroup]="healthFormGroup">
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-md-6">
                                 <div class="my-input-box">
-                                    <label for="">Favourite TV Shows</label>
-                                    <textarea name="" placeholder="Favourite TV Shows"></textarea>
+                                    <label>Food Habit</label>
+                                    <select class="form-control" formControlName="foodHabit">
+                                        <option value="" disabled>Select Food Habit</option>
+                                        <option value="Veg">Veg</option>
+                                        <option value="Non-Veg">Non-Veg</option>
+                                        <option value="Only Egg">Only Egg</option>
+                                    </select>
                                 </div>
                             </div>
-                            <div class="col-md-12">
+                            <div class="col-md-6">
                                 <div class="my-input-box">
-                                    <label for="">Favourite Music Bands / Artists</label>
-                                    <textarea name="" placeholder="Favourite Music Bands / Artists"></textarea>
+                                    <label>Drinking</label>
+                                    <select class="form-control" formControlName="drinking">
+                                        <option value="" disabled>Select Drinking</option>
+                                        <option value="Yes">Yes</option>
+                                        <option value="No">No</option>
+                                        <option value="Occasionalg">Occasional</option>
+                                    </select>
                                 </div>
                             </div>
-                            <div class="col-md-12">
+                            <div class="col-md-6">
                                 <div class="my-input-box">
-                                    <label for="">Favourite Movies</label>
-                                    <textarea name="" placeholder="Favourite Movies"></textarea>
+                                    <label>Smoking</label>
+                                    <select class="form-control" formControlName="smoking">
+                                        <option value="" disabled>Select Smoking</option>
+                                        <option value="Yes">Yes</option>
+                                        <option value="No">No</option>
+                                        <option value="Occasionalg">Occasional</option>
+                                    </select>
                                 </div>
                             </div>
-                            <div class="col-md-12">
+                            <div class="col-md-6">
                                 <div class="my-input-box">
-                                    <label for="">Favourite Games </label>
-                                    <textarea name="" placeholder="Favourite Games "></textarea>
+                                    <label>Physically Challenged</label>
+                                    <select class="form-control" formControlName="physicallyChallenged">
+                                        <option value="" disabled>Select Physically Challenged</option>
+                                        <option value="Yes">Yes</option>
+                                        <option value="No">No</option>
+                                        <option value="Minor Issue">Minor Issue</option>
+                                    </select>
                                 </div>
                             </div>
-                            <div class="col-md-12">
+                            <div class="col-md-6">
                                 <div class="my-input-box">
-                                    <label for="">Favourite Games </label>
-                                    <textarea name="" placeholder="Favourite Games"></textarea>
+                                    <label>Height (cm)</label>
+                                    <input type="text" class="form-control" placeholder="Height"
+                                        formControlName="height" autocomplete="off" appAcceptNumberOnly>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="my-input-box">
+                                    <label>Weight (kg)</label>
+                                    <input type="text" class="form-control" placeholder="Weight"
+                                        formControlName="weight" autocomplete="off" appAcceptNumberOnly>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="my-input-box">
+                                    <label>Any health issues</label>
+                                    <textarea type="text" class="form-control" placeholder="Any health issues"
+                                        formControlName="anyHealthIssues" autocomplete="off"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="my-input-box">
+                                    <label>Nationality</label>
+                                    <select class="form-control" formControlName="nationality">
+                                        <option value="" disabled>Select Nationality</option>
+                                        <option value="Indian">Indian</option>
+                                        <option value="Others">Others</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="input-info-box mt-30">
+                <div class="input-info-box mt-30" *ngIf="preferenceSection">
                     <div class="header">
-                        Jobs & Education
+                        Preference
                     </div>
-                    <div class="content">
+                    <div class="content" [formGroup]="preferenceFormGroup">
                         <div class="row">
-                            <div class="col-md-12">
-                                <div class="my-input-box">
-                                    <label for="">Title or Place</label>
-                                    <input type="text" placeholder="Title or Place">
-                                </div>
-                            </div>
                             <div class="col-md-6">
                                 <div class="my-input-box">
-                                    <label for="">Year Started</label>
-                                    <select name="" id="">
-                                        <option value="">2014</option>
+                                    <label for="">Religion</label>
+                                    <select class="form-control" formControlName="religionid">
+                                        <option value="" disabled>Select Religion</option>
+                                        <option *ngFor="let religion of religionLists" value="{{religion.id}}">
+                                            {{religion.description}}</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="my-input-box">
-                                    <label for="">Year End</label>
-                                    <select name="" id="">
-                                        <option value="">2017</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="my-input-box">
-                                    <label for="">Description</label>
-                                    <textarea name="" id="" placeholder="Description"></textarea>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="my-input-box">
-                                    <label for="">Title or Place</label>
-                                    <input type="text" placeholder="Title or Place">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="my-input-box">
-                                    <label for="">Year Started</label>
-                                    <select name="" id="">
-                                        <option value="">2014</option>
+                                    <label for="">Caste</label>
+                                    <select class="form-control" formControlName="casteid">
+                                        <option value="" disabled>Select Caste</option>
+                                        <option *ngFor="let caste of casteLists" value="{{caste.id}}">
+                                            {{caste.description}}</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="my-input-box">
-                                    <label for="">Year End</label>
-                                    <select name="" id="">
-                                        <option value="">2017</option>
+                                    <label for="">Mother Tongue</label>
+                                    <select class="form-control" formControlName="languageid">
+                                        <option value="" disabled>Select Mother Tongue</option>
+                                        <option *ngFor="let language of languageLists" value="{{language.id}}">
+                                            {{language.description}}</option>
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-md-12">
+                            <div class="col-md-6">
                                 <div class="my-input-box">
-                                    <label for="">Description</label>
-                                    <textarea name="" id="" placeholder="Description"></textarea>
+                                    <label>Food Habit</label>
+                                    <select class="form-control" formControlName="foodHabit">
+                                        <option value="" disabled>Select Food Habit</option>
+                                        <option value="Veg">Veg</option>
+                                        <option value="Non-Veg">Non-Veg</option>
+                                        <option value="Only Egg">Only Egg</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="input-info-box mt-30" *ngIf="paymentSection">
+                    <div class="header">
+                        Payment
+                    </div>
+                    <div class="content" [formGroup]="paymentFormGroup">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="my-input-box">
+                                    <label for="">Email</label>
+                                    <input type="text" class="form-control" placeholder="Email" formControlName="Email"
+                                        autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="my-input-box">
+                                    <label for="">Alternate Mobile Number</label>
+                                    <input type="text" class="form-control" placeholder="Alternate Mobile Number"
+                                        formControlName="alternativeMobile" autocomplete="off" appAcceptNumberOnly>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="my-input-box">
+                                    <label for="">Aadhar Number</label>
+                                    <input type="text" class="form-control" placeholder="Aadhar Number"
+                                        formControlName="aadharnumber" autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="col-md-6"></div>
+                            <div class="col-md-12">
+                                <div class="buttons  mt-30">
+                                    <button type="submit" class="custom-button">Pay 1999/- for Pro-Customer</button>
+                                    <button class="custom-button2">Pay Later</button>
                                 </div>
                             </div>
                         </div>
@@ -355,7 +574,6 @@
                 </div>
                 <div class="buttons  mt-30">
                     <button type="submit" class="custom-button">Save Changes</button>
-                    <button class="custom-button2">Discard All</button>
                 </div>
             </div>
         </div>

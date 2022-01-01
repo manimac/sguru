@@ -3,7 +3,11 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  // baseurl: 'http://localhost:8082/sguru/',
+  // authurl: 'http://localhost:8082/sguru/api/'
+  baseurl: 'https://hinkeawebsolutions.in/sguru/',
+  authurl: 'https://hinkeawebsolutions.in/sguru/api/'
 };
 
 /*
