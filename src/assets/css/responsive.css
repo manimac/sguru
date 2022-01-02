@@ -1295,3 +1295,37 @@
 
 
 }
+
+@media screen and (max-width: 1200px) {
+    .footer-section {
+        padding-top: 200px;
+    }
+}
+@media screen and (max-width: 991px) {
+    .log-reg {
+        background-color: #d50000a8;
+    }
+    .banner-section.home2 {
+        height: auto;
+        padding: 100px 0 50px;
+    }
+    .banner-section .img2 {
+        top: 25%;
+        bottom: auto;
+        max-width: 40%;
+    }
+    header {
+        height: 65px;
+    }
+    header > .container, header .header-wrapper {
+        height: 100%;
+    }
+    .header-section {
+        background-color: transparent;
+    }
+    .header-wrapper .menu {
+        background-color: #ff5f5f !important;
+        top: 65px;
+        height: calc(100vh - 65px);
+    }
+}
