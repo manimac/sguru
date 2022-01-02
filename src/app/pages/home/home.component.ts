@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { HttpRequestService } from 'src/app/services/http-request/http-request.service';
 
 @Component({
   selector: 'app-home',
@@ -22,7 +23,7 @@ export class HomeComponent implements OnInit {
     password: new FormControl('', Validators.required),
     confirmPassword: new FormControl('', Validators.required)
   })
-  constructor(private router: Router) { }
+  constructor(private router: Router, private http: HttpRequestService) { }
 
   ngOnInit(): void {
   }
@@ -34,12 +35,50 @@ export class HomeComponent implements OnInit {
   }
 
   showVerifySection() {
-    this.joinNow = false;
-    this.verifyOtp = true;
+    this.http.post('user/mobileNumberExist', {phone: this.joinFormGroup.value.phone}).subscribe(
+      (response: any) => {
+        this.joinNow = false;
+        this.verifyOtp = true;
+      },
+      (error: any) => {
+        this.http.exceptionHandling(error);
+      }
+    )
   }
 
   submitVerify() {
-    this.router.navigate(['/profile']);
+    let params: any = {
+      firstname: this.joinFormGroup.value.firstname,
+      lastname: this.joinFormGroup.value.lastname,
+      phone: this.joinFormGroup.value.phone,
+      password: this.verifyFormGroup.value.password,
+      email: 'yyyyyy@gmail.com'
+    };
+    this.http.postAuth('signup-user', params).subscribe(
+      (response: any) => {
+        this.profileCreate(response.userid);
+      },
+      (error: any) => {
+        this.http.exceptionHandling(error);
+      }
+    )
+  }
+
+  profileCreate(userid: any) {
+    let _form = new FormData();
+    _form.append('gender', this.joinFormGroup.value.gender);
+    _form.append('userid', userid);
+    this.http.post('user/createProfile', _form).subscribe(
+      (response: any) => {
+        this.joinFormGroup.reset();
+        this.verifyFormGroup.reset();
+        this.router.navigate(['/profile']);
+        this.http.successMessage("Registered Successfully");
+      },
+      (error: any) => {
+        this.http.exceptionHandling(error);
+      }
+    )
   }
 
 }

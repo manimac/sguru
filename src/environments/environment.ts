@@ -4,10 +4,10 @@
 
 export const environment = {
   production: false,
-  // baseurl: 'http://localhost:8082/sguru/',
-  // authurl: 'http://localhost:8082/sguru/api/'
-  baseurl: 'https://hinkeawebsolutions.in/sguru/',
-  authurl: 'https://hinkeawebsolutions.in/sguru/api/'
+  baseurl: 'http://localhost:8082/sguru/',
+  authurl: 'http://localhost:8082/sguru/api/'
+  // baseurl: 'https://hinkeawebsolutions.in/sguru/',
+  // authurl: 'https://hinkeawebsolutions.in/sguru/api/'
 };
 
 /*
