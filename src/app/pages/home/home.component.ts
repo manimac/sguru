@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpRequestService } from 'src/app/services/http-request/http-request.service';
+import { StorageService } from 'src/app/services/storage/storage.service';
 
 @Component({
   selector: 'app-home',
@@ -23,7 +24,12 @@ export class HomeComponent implements OnInit {
     password: new FormControl('', Validators.required),
     confirmPassword: new FormControl('', Validators.required)
   })
-  constructor(private router: Router, private http: HttpRequestService) { }
+  isLoggedIn: boolean = false;
+  constructor(private router: Router, private http: HttpRequestService, private storage: StorageService) { 
+    if(this.storage.getToken()){
+      this.isLoggedIn = true;
+    }
+  }
 
   ngOnInit(): void {
   }
@@ -56,6 +62,8 @@ export class HomeComponent implements OnInit {
     };
     this.http.postAuth('signup-user', params).subscribe(
       (response: any) => {
+        this.storage.setToken(response.user.token);
+        this.storage.setUserDetails(response.user);
         this.profileCreate(response.userid);
       },
       (error: any) => {

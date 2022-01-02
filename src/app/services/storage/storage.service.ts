@@ -8,11 +8,11 @@ export class StorageService {
   constructor() { }
 
   setToken(params: any){
-    localStorage.setItem('jwtToken', JSON.stringify(params));
+    localStorage.setItem('jwtProfileToken', JSON.stringify(params));
   }
 
   getToken(){
-    let token = localStorage.getItem('jwtToken')
+    let token = localStorage.getItem('jwtProfileToken')
     if(token){
       token = JSON.parse(token);
     }
@@ -20,11 +20,11 @@ export class StorageService {
   }
 
   setUserDetails(params: any){
-    localStorage.setItem('jwtUserDetails', JSON.stringify(params));
+    localStorage.setItem('jwtProfileUserDetails', JSON.stringify(params));
   }
 
   getUserDetails(){
-    let userDetails = localStorage.getItem('jwtUserDetails')
+    let userDetails = localStorage.getItem('jwtProfileUserDetails')
     if(userDetails){
       userDetails = JSON.parse(userDetails);
     }

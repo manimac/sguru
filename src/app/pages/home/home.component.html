@@ -8,7 +8,7 @@
           Find Love
           Your Life
         </h1>
-        <div class="join-now-box wow fadeInUp" *ngIf="joinNow">          
+        <div class="join-now-box wow fadeInUp" *ngIf="joinNow&&!isLoggedIn">          
           <form class="forms-sample" [formGroup]="joinFormGroup" (ngSubmit)="showVerifySection()">
             <div class="single-option">
               <div class="mr-3">
@@ -36,7 +36,7 @@
             </div>
           </form>          
         </div>
-        <div class="join-now-box wow fadeInUp" *ngIf="verifyOtp">
+        <div class="join-now-box wow fadeInUp" *ngIf="verifyOtp&&!isLoggedIn">
           <form class="forms-sample" [formGroup]="verifyFormGroup" (ngSubmit)="submitVerify()">
             <div class="single-option">
               <input type="password" placeholder="OTP" class="form-control" formControlName="otp">
