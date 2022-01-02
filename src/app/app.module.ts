@@ -12,6 +12,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AcceptNumberOnlyDirective } from './directives/accept-number-only.directive';
 import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './pages/login/login.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { HttpClientModule } from '@angular/common/http';
     FooterComponent,
     HomeComponent,
     ProfileComponent,
-    AcceptNumberOnlyDirective
+    AcceptNumberOnlyDirective,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
