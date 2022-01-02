@@ -8961,4 +8961,21 @@ input[type=submit] {
 .header-active .logo a .scrolled {
   display: block;
 }
+.banner-section .join-now-box .single-option {
+    border: 0;
+    padding: 10px 20px;
+}
+.up-photo-card > input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+.breadcrumb-area {
+  background: none !important;
+  background-color: #d50000a8 !important;
+}
 /*New Theme CSS*/
