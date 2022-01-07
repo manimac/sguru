@@ -1,3 +1,14 @@
 .links li a {
     cursor: pointer;
 }
+.my-input-box .disabled {
+    background: #dddddd;
+  }
+  .previous{
+    background: #f1f1f1;
+    color: black;
+  }
+  .custom-button2{
+    -webkit-box-shadow: 0.872px 9.962px 20px 0px rgb(12 78 165 / 30%);
+    box-shadow: 0.872px 9.962px 20px 0px rgb(12 78 165 / 30%);
+  }

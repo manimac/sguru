@@ -37,9 +37,10 @@
           </form>          
         </div>
         <div class="join-now-box wow fadeInUp" *ngIf="verifyOtp&&!isLoggedIn">
+          <p class="otp-message">Otp sent to registered mobile number</p>
           <form class="forms-sample" [formGroup]="verifyFormGroup" (ngSubmit)="submitVerify()">
             <div class="single-option">
-              <input type="password" placeholder="OTP" class="form-control" formControlName="otp">
+              <input type="password" placeholder="OTP" class="form-control" formControlName="otp" appAcceptNumberOnly>
             </div>
             <div class="single-option">
               <input type="password" placeholder="Create Password" class="form-control" formControlName="password">
@@ -60,7 +61,7 @@
 <!-- ==========Banner-Section========== -->
 
 <!-- ==========Feature-Section========== -->
-<section class="feature-section">
+<section class="feature-section" *ngIf="!userPaid">
   <div class="container">
     <div class="row">
       <div class="col-lg-3 col-sm-6">
@@ -109,170 +110,39 @@
 <!-- ==========Feature-Section========== -->
 
 <!-- ==========Community-Section========== -->
-<!-- <section class="community-section inner-page">
+<!-- <section class="community-section inner-page mt-2" *ngIf="isLoggedIn">
     <div class="container">
-      <div class="row">
-        <div class="col-lg-4 col-md-6">
+      <div class="row" *ngIf="dataLists&&dataLists.length>0">
+        <div class="col-lg-4 col-md-6" *ngFor="let data of dataLists">
           <div class="single-community-box">
             <div class="img">
-              <img src="assets/images/cummunity/img5.png" alt="">
+              <img class="max-200" src="assets/images/cummunity/img5.png" alt="" *ngIf="!data.path||!data.UserProfile||!data.UserProfile.image">
+              <img class="max-200" src="{{data.path}}{{data.UserProfile.image}}" alt="" *ngIf="data.path&&data.UserProfile&&data.UserProfile.image">
             </div>
             <div class="content">
-              <p class="date">
-                6 days ago
-              </p>
               <a href="community-single.html" class="title">
-                Philosophy of love
+                {{data.firstname}}
               </a>
-              <p class="text">
-                Love for one another and love for
-                yourself is priceless.
+              <p class="text" *ngIf="data.UserProfile">
+                <span [innerHtml]="getAge(data.UserProfile.dob)"></span> || {{data.UserProfile.annualincome ? data.UserProfile.annualincome : 'Not Mentioned'}}
+              </p>
+              <p class="text" *ngIf="data.UserProfile.Caste">
+                {{data.UserProfile.Caste.description}}
               </p>
             </div>
             <div class="box-footer">
               <div class="left">
-                <i class="fas fa-globe-americas"></i> Public
               </div>
               <div class="right">
-                <i class="fas fa-users"></i> 100
+                <i class="fas fa-heart"></i> 
               </div>
             </div>
           </div>
         </div>
-        <div class="col-lg-4 col-md-6">
-          <div class="single-community-box">
-            <div class="img">
-              <img src="assets/images/cummunity/img4.png" alt="">
-            </div>
-            <div class="content">
-              <p class="date">
-                6 days ago
-              </p>
-              <a href="community-single.html" class="title">
-                Communication Key
-              </a>
-              <p class="text">
-                Love for one another and love for
-                yourself is priceless.
-              </p>
-            </div>
-            <div class="box-footer">
-              <div class="left">
-                <i class="fas fa-globe-americas"></i> Public
-              </div>
-              <div class="right">
-                <i class="fas fa-users"></i> 100
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6">
-          <div class="single-community-box">
-            <div class="img">
-              <img src="assets/images/cummunity/img3.jpg" alt="">
-            </div>
-            <div class="content">
-              <p class="date">
-                6 days ago
-              </p>
-              <a href="community-single.html" class="title">
-                Communication Tips
-              </a>
-              <p class="text">
-                Love for one another and love for
-                yourself is priceless.
-              </p>
-            </div>
-            <div class="box-footer">
-              <div class="left">
-                <i class="fas fa-globe-americas"></i> Public
-              </div>
-              <div class="right">
-                <i class="fas fa-users"></i> 100
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6">
-          <div class="single-community-box">
-            <div class="img">
-              <img src="assets/images/cummunity/img4.png" alt="">
-            </div>
-            <div class="content">
-              <p class="date">
-                6 days ago
-              </p>
-              <a href="community-single.html" class="title">
-                Easy Way to Dating
-              </a>
-              <p class="text">
-                Love for one another and love for
-                yourself is priceless.
-              </p>
-            </div>
-            <div class="box-footer">
-              <div class="left">
-                <i class="fas fa-globe-americas"></i> Public
-              </div>
-              <div class="right">
-                <i class="fas fa-users"></i> 100
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6">
-          <div class="single-community-box">
-            <div class="img">
-              <img src="assets/images/cummunity/img5.png" alt="">
-            </div>
-            <div class="content">
-              <p class="date">
-                6 days ago
-              </p>
-              <a href="community-single.html" class="title">
-                Online Dating Tips
-              </a>
-              <p class="text">
-                Love for one another and love for
-                yourself is priceless.
-              </p>
-            </div>
-            <div class="box-footer">
-              <div class="left">
-                <i class="fas fa-globe-americas"></i> Public
-              </div>
-              <div class="right">
-                <i class="fas fa-users"></i> 100
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6">
-          <div class="single-community-box">
-            <div class="img">
-              <img src="assets/images/cummunity/img6.png" alt="">
-            </div>
-            <div class="content">
-              <p class="date">
-                6 days ago
-              </p>
-              <a href="community-single.html" class="title">
-                An Effective Way
-              </a>
-              <p class="text">
-                Love for one another and love for
-                yourself is priceless.
-              </p>
-            </div>
-            <div class="box-footer">
-              <div class="left">
-                <i class="fas fa-globe-americas"></i> Public
-              </div>
-              <div class="right">
-                <i class="fas fa-users"></i> 100
-              </div>
-            </div>
-          </div>
+      </div>
+      <div class="row" *ngIf="dataLists.length==0">
+        <div class="col-lg-12">
+          <h3 class="text-center">No profiles found</h3>
         </div>
       </div>
     </div>
@@ -280,7 +150,7 @@
 <!-- ==========Community-Sectionn========== -->
 
 <!-- ==========How it work Section========== -->
-<section class="how-it-work-section">
+<section class="how-it-work-section" *ngIf="!userPaid">
   <img class="shape1" src="assets/images/h-it-w/circle-shape.png" alt="">
   <img class="shape2" src="assets/images/h-it-w/bird.png" alt="">
   <div class="container">
@@ -350,7 +220,7 @@
 <!-- ==========How it work Section========== -->
 
 <!-- ==========Features-Section========== -->
-<section class="feature-section extra-feature">
+<section class="feature-section extra-feature" *ngIf="!userPaid">
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-lg-6">

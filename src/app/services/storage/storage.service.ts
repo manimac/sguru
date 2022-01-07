@@ -41,6 +41,15 @@ export class StorageService {
     return userDetails.id;
   }
 
+  isPaid(){
+    let result: any = false;
+    let userDetails: any = this.getUserDetails();
+    if(userDetails && userDetails.status==3){
+      result = true;
+    }
+    return result;
+  }
+
   isAdmin(){
     let result: any = false;
     let userDetails: any = this.getUserDetails();

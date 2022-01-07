@@ -8,7 +8,7 @@ import { ToastrService } from 'ngx-toastr';
 export class HttpRequestService {
 
   private baseUrl = environment.baseurl;
-  
+
   constructor(private http: HttpClient, private toastr: ToastrService) { }
 
   setHeaders() {
@@ -25,6 +25,11 @@ export class HttpRequestService {
     return this.http.post(this.baseUrl + url, body, { headers });
   }
 
+  sendSms(url: any) {
+    const headers = this.setHeaders();
+    return this.http.get(url);
+  }
+
   postAuth(url: any, body: any) {
     const headers = this.setHeaders();
     return this.http.post(environment.authurl + url, body, { headers });
@@ -35,24 +40,35 @@ export class HttpRequestService {
     return this.http.delete(this.baseUrl + url + id, { headers });
   }
 
-  successMessage(message: any){
+  successMessage(message: any) {
     this.toastr.success(message);
   }
 
-  errorMessage(message: any){
+  errorMessage(message: any) {
     this.toastr.error(message);
   }
 
-  exceptionHandling(error: any){
-    if(error && error.error && error.error.message){
+  exceptionHandling(error: any) {
+    if (error && error.error && error.error.message) {
       this.toastr.error(error.error.message);
     }
-    else if(error && error.error){
+    else if (error && error.error) {
       this.toastr.error(error.error);
     }
-    else{
+    else {
       this.toastr.error("Request Failed");
     }
+  }
+
+  sendOtpSms(phone: any, firstname: any, currentOtp: any) {
+    let url = `http://www.smsintegra.com/api/smsapi.aspx?uid=shaadhiguru&pwd=11985&mobile=` + phone + `&msg=Dear%20` + firstname + `,%20Your%20mobile%20number%20verification%20PIN%20is%20` + currentOtp + `%20-%20www.shaadhiguru.com%20Modern%20Office&sid=FrmShG&type=0&dtTimeNow=xxxxx&entityid=1601414164024691516&tempid=1607100000000180311`
+    this.sendSms(url).subscribe(
+      (response: any) => {
+      },
+      (error: any) => {
+        // this.http.exceptionHandling(error);
+      }
+    )
   }
 
 

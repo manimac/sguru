@@ -2,3 +2,13 @@
     background: #e15657;
     cursor: inherit;
 }
+.single-community-box .box-footer .right i{
+    margin-right: 0px;
+}
+.max-200{
+    max-height: 200px;
+}
+.otp-message{
+    text-align: center;
+    font-size: 13px;
+}

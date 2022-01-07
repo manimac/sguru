@@ -9,101 +9,26 @@
                 </a>
             </div>
             <ul class="menu">
-                <li>
-                    <a href="#" class="active">Home</a>
+                <li *ngIf="!isLoggedIn">
+                    <a href="javascript:void(0);" routerLink="/" [ngClass]="{'active':router.url=='/'}">Home</a>
                 </li>
-                <li>
-                    <a href="community.html">About Us</a>
+                <li *ngIf="isLoggedIn">
+                    <a href="javascript:void(0);" routerLink="/inbox" [ngClass]="{'active':router.url=='/inbox'}">Inbox</a>
                 </li>
-                <!-- <li>
-                    <a href="membership.html">Membership</a>
+                <li *ngIf="!isLoggedIn">
+                    <a href="javascript:void(0);" routerLink="/login">Login</a>
                 </li>
-                <li>
-                    <a href="shop2.html">Shop</a>
-                </li>
-                <li>
-                    <a href="#">pages</a>
-                    <ul class="submenu">
-                        <li>
-                            <a href="user-setting.html">User Panel</a>
-                        </li>
-                        <li>
-                            <a href="about.html">About Us</a>
-                        </li>
-                        <li>
-                            <a href="community-single.html">Community Single</a>
-                        </li>
-                        <li>
-                            <a href="members.html">Members</a>
-                        </li>
-                        <li>
-                            <a href="shop3.html">Shop sidebar</a>
-                        </li>
-                        <li>
-                            <a href="single-profile.html">Single Profile One</a>
-                        </li>
-                        <li>
-                            <a href="single-profile2.html">Single Profile Two</a>
-                        </li>
-                        <li>
-                            <a href="single-profile3.html">Single Profile Three</a>
-                        </li>
-                        <li>
-                            <a href="single-shope.html">Shop Details</a>
-                        </li>
-                        <li>
-                            <a href="contact.html">Contact</a>
-                        </li>
-                        <li>
-                            <a href="login.html">Login</a>
-                        </li>
-                        <li>
-                            <a href="register.html">Register</a>
-                        </li>
-                        <li>
-                            <a href="404.html">404</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">blog</a>
-                    <ul class="submenu">
-                        <li>
-                            <a href="blog.html">Blog</a>
-                        </li>
-                        <li>
-                            <a href="blog-details.html">Blog Single</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="separator">
-                    <span>|</span>
-                </li>
-                <li>
-                    <div class="serch-icon">
-                        <i class="fas fa-search"></i>
-                    </div>
-                </li>
-                <li>
-                    <div class="language-select">
-                        <select class="select-bar">
-                            <option value="">EN</option>
-                            <option value="">IN</option>
-                            <option value="">BN</option>
-                        </select>
-                    </div>
-                </li> -->
-                <li class="user-profile">
-                    <a href="#">
+                <li class="user-profile" *ngIf="isLoggedIn">
+                    <a href="javascript:void(0);">
                         <!-- <img src="assets/images/user-demo.png" alt=""> -->
                         <span><i class="fa fa-user" aria-hidden="true"></i></span>
                     </a>
                     <ul class="submenu">
                         <li>
-                            <a href="#">Profile</a>
+                            <a href="javascript:void(0);" routerLink="/profile">Profile</a>
                         </li>
                         <li>
-                            <a href="#">Logout</a>
+                            <a href="javascript:void(0);" (click)="logout()">Logout</a>
                         </li>
                     </ul>
                 </li>

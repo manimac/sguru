@@ -13,7 +13,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AcceptNumberOnlyDirective } from './directives/accept-number-only.directive';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './pages/login/login.component';
-
+import { InboxComponent } from './pages/inbox/inbox.component';
+import { RegisterComponent } from './pages/register/register.component';
+// import { AgmCoreModule  } from '@agm/core';  
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +24,9 @@ import { LoginComponent } from './pages/login/login.component';
     HomeComponent,
     ProfileComponent,
     AcceptNumberOnlyDirective,
-    LoginComponent
+    LoginComponent,
+    InboxComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +36,10 @@ import { LoginComponent } from './pages/login/login.component';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-    HttpClientModule
+    HttpClientModule,
+    // AgmCoreModule.forRoot({  
+    //   apiKey: 'AIzaSyCz_--Ff0GGyu5dir4vugNe_2DbYlPOQ2g'  
+    // }),
   ],
   providers: [],
   bootstrap: [AppComponent]

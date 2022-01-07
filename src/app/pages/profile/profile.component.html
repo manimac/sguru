@@ -153,26 +153,37 @@
                                     <div class="top-bg"></div>
                                     <div class="p-inner-content">
                                         <div class="profile-img">
-                                            <img src="assets/images/profile/profile-user.png" alt="">
+                                            <img class="w-100" src="{{imagePath}}{{profileImage}}" alt="" *ngIf="imagePath&&profileImage">
+                                            <img src="assets/images/profile/profile-user.png" alt="" *ngIf="!imagePath||!profileImage">
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="up-photo-card mb-30">
-                                    <input type="file" name="">
+                                    <input type="file" #image (change)="onFileChange(image.files, profileView)">
                                     <div class="icon">
                                         <i class="fas fa-user"></i>
                                     </div>
                                     <div class="content">
                                         <h4>
-                                            Change Avatar
+                                            Change Picture
                                         </h4>
                                         <span>
                                             120x120p size minimum
                                         </span>
                                     </div>
                                 </div>
+                                <!-- <div class="up-photo-card cursor-pointer" (click)="removeFile(profileView)">
+                                    <div class="icon">
+                                        <i class="fas fa-user"></i>
+                                    </div>
+                                    <div class="content">
+                                        <h4>
+                                            Remove Picture
+                                        </h4>
+                                    </div>
+                                </div> -->
                             </div>
                         </div>
                         <div class="row mt-2">
@@ -201,8 +212,8 @@
                             <div class="col-md-6">
                                 <div class="my-input-box">
                                     <label for="">Mobile Number</label>
-                                    <input type="text" placeholder="Mobile Number" formControlName="phone"
-                                        appAcceptNumberOnly>
+                                    <input type="text" class="disabled" placeholder="Mobile Number" formControlName="phone"
+                                        appAcceptNumberOnly maxlength="10" readonly>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -298,7 +309,7 @@
                         <div class="row">                            
                             <div class="col-md-12">
                                 <div class="buttons">
-                                    <button type="submit" class="custom-button" (click)="showCareer(profileView)">Next</button>
+                                    <button type="submit" class="custom-button" (click)="saveProfile('showCareer', profileView)">Save & Next</button>
                                 </div>
                             </div>
                         </div>
@@ -370,8 +381,14 @@
                             <div class="col-md-6">
                                 <div class="my-input-box">
                                     <label>Occupation</label>
-                                    <input type="text" class="form-control" placeholder="Occupation"
-                                        formControlName="occupation" autocomplete="off">
+                                    <select class="form-control" formControlName="occupation">
+                                        <option value="" disabled>Select Occupation</option>
+                                        <option value="Govt Salaried">Govt Salaried</option>
+                                        <option value="Pvt Salaried">Pvt Salaried</option>
+                                        <option value="Business">Business</option>
+                                        <option value="Professional">Professional</option>
+                                        <option value="Others">Others</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -409,8 +426,8 @@
                         <div class="row">                            
                             <div class="col-md-12">
                                 <div class="buttons">
-                                    <button type="submit" class="custom-button" (click)="showBasicDetails(profileView)">Back</button>
-                                    <button type="submit" class="custom-button ml-3" (click)="showHealth(profileView)">Next</button>
+                                    <button type="submit" class="custom-button previous" (click)="showBasicDetails(profileView)">Back</button>
+                                    <button type="submit" class="custom-button ml-3" (click)="saveProfile('showHealth', profileView)">Save & Next</button>
                                 </div>
                             </div>
                         </div>
@@ -491,8 +508,8 @@
                         <div class="row">                            
                             <div class="col-md-12">
                                 <div class="buttons">
-                                    <button type="submit" class="custom-button" (click)="showCareer(profileView)">Back</button>
-                                    <button type="submit" class="custom-button ml-3" (click)="showPreference(profileView)">Next</button>
+                                    <button type="submit" class="custom-button previous" (click)="showCareer(profileView)">Back</button>
+                                    <button type="submit" class="custom-button ml-3" (click)="saveProfile('showPreference', profileView)">Save & Next</button>
                                 </div>
                             </div>
                         </div>
@@ -507,7 +524,7 @@
                             <div class="col-md-6">
                                 <div class="my-input-box">
                                     <label for="">Religion</label>
-                                    <select class="form-control" formControlName="religionid">
+                                    <select class="form-control" formControlName="preferencereligionid">
                                         <option value="" disabled>Select Religion</option>
                                         <option *ngFor="let religion of religionLists" value="{{religion.id}}">
                                             {{religion.description}}</option>
@@ -517,7 +534,7 @@
                             <div class="col-md-6">
                                 <div class="my-input-box">
                                     <label for="">Caste</label>
-                                    <select class="form-control" formControlName="casteid">
+                                    <select class="form-control" formControlName="preferencecasteid">
                                         <option value="" disabled>Select Caste</option>
                                         <option *ngFor="let caste of casteLists" value="{{caste.id}}">
                                             {{caste.description}}</option>
@@ -527,7 +544,7 @@
                             <div class="col-md-6">
                                 <div class="my-input-box">
                                     <label for="">Mother Tongue</label>
-                                    <select class="form-control" formControlName="languageid">
+                                    <select class="form-control" formControlName="preferencelanguageid">
                                         <option value="" disabled>Select Mother Tongue</option>
                                         <option *ngFor="let language of languageLists" value="{{language.id}}">
                                             {{language.description}}</option>
@@ -537,7 +554,7 @@
                             <div class="col-md-6">
                                 <div class="my-input-box">
                                     <label>Food Habit</label>
-                                    <select class="form-control" formControlName="foodHabit">
+                                    <select class="form-control" formControlName="preferencefoodHabit">
                                         <option value="" disabled>Select Food Habit</option>
                                         <option value="Veg">Veg</option>
                                         <option value="Non-Veg">Non-Veg</option>
@@ -549,8 +566,8 @@
                         <div class="row">                            
                             <div class="col-md-12">
                                 <div class="buttons">
-                                    <button type="submit" class="custom-button" (click)="showHealth(profileView)">Back</button>
-                                    <button type="submit" class="custom-button ml-3" (click)="showPayment(profileView)">Next</button>
+                                    <button type="submit" class="custom-button previous" (click)="showHealth(profileView)">Back</button>
+                                    <button type="submit" class="custom-button ml-3" (click)="saveProfile('showPayment', profileView)">Save & Next</button>
                                 </div>
                             </div>
                         </div>
@@ -573,7 +590,7 @@
                                 <div class="my-input-box">
                                     <label for="">Alternate Mobile Number</label>
                                     <input type="text" class="form-control" placeholder="Alternate Mobile Number"
-                                        formControlName="alternativeMobile" autocomplete="off" appAcceptNumberOnly>
+                                        formControlName="alternativeMobile" autocomplete="off" appAcceptNumberOnly maxlength="10">
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -586,19 +603,20 @@
                             <div class="col-md-6"></div>
                             <div class="col-md-12">
                                 <div class="buttons  mt-30">
-                                    <button type="submit" class="custom-button">Pay 1999/- for Pro-Customer</button>
-                                    <button class="custom-button2">Pay Later</button>
+                                    <button type="submit" class="custom-button previous" (click)="showPreference(profileView)">Back</button>
+                                    <button type="submit" class="custom-button ml-4" (click)="payment(profileView)">Pay 1999/- for Pro-Customer</button>
+                                    <button class="custom-button2" (click)="payLater(profileView)">Pay Later</button>
                                 </div>
                             </div>
                         </div>
-                        <div class="row">                            
+                        <!-- <div class="row">                            
                             <div class="col-md-12">
                                 <div class="buttons">
                                     <button type="submit" class="custom-button" (click)="showPreference(profileView)">Back</button>
-                                    <button type="submit" class="custom-button ml-3">Save</button>
+                                    <button type="submit" class="custom-button ml-3" (click)="saveProfile('', profileView)">Save</button>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>

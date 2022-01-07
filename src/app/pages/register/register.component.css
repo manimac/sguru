@@ -1,0 +1,16 @@
+.log-reg .image{
+    width: 34%;
+}
+.disabled{
+    opacity: 0.65;
+    cursor: inherit;
+}
+.otp-message{
+    text-align: center;
+    font-size: 13px;
+}
+.resend-button{
+    text-decoration: underline;
+    font-size: 14px;
+    cursor: pointer;
+}

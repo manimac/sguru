@@ -8,7 +8,8 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'frontend';
+  showLoader: boolean = true;
   constructor(public router: Router){
-    
+    this.showLoader = false;
   }
 }
