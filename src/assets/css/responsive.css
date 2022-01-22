@@ -1330,7 +1330,7 @@
     }
 }
 
-//New CSS
+/**************** New CSS ****************/
 @media screen and (max-width: 991px) {
   .log-reg { background-color: #FFFFFF; }
   .log-reg .log-reg-inner {padding-left: 0px;}
