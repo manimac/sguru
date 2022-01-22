@@ -1,0 +1,289 @@
+<section class="breadcrumb-area profile-bc-area">
+    <div class="container">
+        <div class="content">
+            <h2 class="title extra-padding">
+                Single Profile
+            </h2>
+        </div>
+    </div>
+</section>
+<!-- ==========Breadcrumb-Section========== -->
+
+
+<!-- ========= Profile Section Start -->
+<section class="profile-section">
+    <div class="container">
+        <div class="row justify-content-center" *ngIf="userDetails.UserProfile">
+            <div class="col-xl-4 col-lg-5 col-md-7">
+                <div class="left-profile-area">
+                    <div class="profile-about-box">
+                        <div class="top-bg"></div>
+                        <div class="p-inner-content">
+                            <div class="profile-img">
+                                <img src="{{imagePath}}{{profileImage}}" alt="" *ngIf="imagePath&&profileImage" class="w-100 profile-detail-pic">
+                                <img src="assets/images/profile/profile-user.png" alt="" *ngIf="!imagePath||!profileImage" class="w-100">
+                            </div>
+                            <h5 class="name">
+                                {{userDetails.firstname}} {{userDetails.lastname}}
+                            </h5>
+                            <ul class="p-b-meta-one" *ngIf="userDetails.UserProfile">
+                                <li>
+                                    <span><span [innerHtml]="getAge(userDetails.UserProfile.dob)"></span> Years Old</span>
+                                </li>
+                                <li>
+                                    <span class="text-capitalize"> <i class="fas fa-map-marker-alt"></i>{{userDetails.UserProfile.city}}, {{userDetails.UserProfile.state}}, {{userDetails.UserProfile.national}}</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="profile-meta-box text-center">
+                        <ul class="p-m-b">
+                            <li>
+                                <a href="javascript:void(0);" data-toggle="tooltip" title="Add to Favourite" (click)="setProfileLink('favourite')" [ngClass]="{'added': userProfileLink.status=='favourite'}">
+                                    <i class="far fa-heart" [ngClass]="{'iconadded': userProfileLink.status=='favourite'}"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);" data-toggle="tooltip" title="Not Interested" (click)="setProfileLink('notInterested')" [ngClass]="{'added': userProfileLink.status=='notInterested'}">
+                                    <i class="far fa-thumbs-down" [ngClass]="{'iconadded': userProfileLink.status=='notInterested'}"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);" data-toggle="tooltip" title="Block" (click)="setProfileLink('block')" [ngClass]="{'added': userProfileLink.status=='block'}">
+                                    <i class="fas fa-ban" [ngClass]="{'iconadded': userProfileLink.status=='block'}"></i>
+                                </a>
+                            </li>
+                        </ul>
+                        <button class="custom-button">Contact Request</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-8 col-lg-6">
+                <div class="profile-main-content">
+                    <div class="info-box m-0">
+                        <div class="header">
+                            <h4 class="title">
+                                Basic Details
+                            </h4>
+                        </div>
+                        <div class="content">
+                            <ul class="infolist">
+                                <li>
+                                    <span>
+                                        Name
+                                    </span>
+                                    <span>
+                                        {{userDetails.firstname}} {{userDetails.lastname}}
+                                    </span>
+                                </li>
+                                <li>
+                                    <span>
+                                        Gender
+                                    </span>
+                                    <span>
+                                        {{userDetails.UserProfile.gender}}
+                                    </span>
+                                </li>
+                                <li>
+                                    <span>
+                                        Time of Birth
+                                    </span>
+                                    <span>
+                                        {{userDetails.UserProfile.timeOfBirth}}
+                                    </span>
+                                </li>
+                                <li>
+                                    <span>
+                                        Place of Birth
+                                    </span>
+                                    <span>
+                                        {{userDetails.UserProfile.placeOfBirth}}
+                                    </span>
+                                </li>
+                                <li>
+                                    <span>
+                                        Birth Star
+                                    </span>
+                                    <span *ngIf="userDetails.UserProfile.Birthstar">
+                                        {{userDetails.UserProfile.Birthstar.description}}
+                                    </span>
+                                </li>
+                                <li>
+                                    <span>
+                                        Birth Rasi
+                                    </span>
+                                    <span *ngIf="userDetails.UserProfile.Birthrasi">
+                                        {{userDetails.UserProfile.Birthrasi.description}}
+                                    </span>
+                                </li>
+                                <li>
+                                    <span>
+                                        Mother Tongue
+                                    </span>
+                                    <span *ngIf="userDetails.UserProfile.Language">
+                                        {{userDetails.UserProfile.Language.description}}
+                                    </span>
+                                </li>
+                                <li>
+                                    <span>
+                                        Caste
+                                    </span>
+                                    <span *ngIf="userDetails.UserProfile.Caste">
+                                        {{userDetails.UserProfile.Caste.description}}
+                                    </span>
+                                </li>
+                                <li>
+                                    <span>
+                                        Sub caste
+                                    </span>
+                                    <span>
+                                        {{userDetails.UserProfile.subCaste}}
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="info-box">
+                        <div class="header">
+                            <h4 class="title">
+                                Career
+                            </h4>
+                        </div>
+                        <div class="content">
+                            <ul class="infolist">
+                                <li>
+                                    <span>
+                                        Maritial Status
+                                    </span>
+                                    <span>
+                                        {{userDetails.UserProfile.maritialStatus}}
+                                    </span>
+                                </li>
+                                <li>
+                                    <span>
+                                        Educational
+                                    </span>
+                                    <span>
+                                        {{userDetails.UserProfile.educational}}
+                                    </span>
+                                </li>
+                                <li>
+                                    <span>
+                                        Educational Option
+                                    </span>
+                                    <span>
+                                        {{userDetails.UserProfile.educationalOption}}
+                                    </span>
+                                </li>
+                                <li>
+                                    <span>
+                                        Occupation
+                                    </span>
+                                    <span>
+                                        {{userDetails.UserProfile.occupation}}
+                                    </span>
+                                </li>
+                                <li>
+                                    <span>
+                                        Career
+                                    </span>
+                                    <span>
+                                        {{userDetails.UserProfile.career}}
+                                    </span>
+                                </li>
+                                <li>
+                                    <span>
+                                        Annual Income
+                                    </span>
+                                    <span>
+                                        {{userDetails.UserProfile.annualincome}}
+                                    </span>
+                                </li>
+                                <li>
+                                    <span>
+                                        Nationality
+                                    </span>
+                                    <span>
+                                        {{userDetails.UserProfile.nationality}}
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="info-box">
+                        <div class="header">
+                            <h4 class="title">
+                                Health
+                            </h4>
+                        </div>
+                        <div class="content">
+                            <ul class="infolist">
+                                <li>
+                                    <span>
+                                        Food Habit
+                                    </span>
+                                    <span>
+                                        {{userDetails.UserProfile.foodHabit}}
+                                    </span>
+                                </li>
+                                <li>
+                                    <span>
+                                        Drinking
+                                    </span>
+                                    <span>
+                                        {{userDetails.UserProfile.drinking}}
+                                    </span>
+                                </li>
+                                <li>
+                                    <span>
+                                        Smoking
+                                    </span>
+                                    <span>
+                                        {{userDetails.UserProfile.smoking}}
+                                    </span>
+                                </li>
+                                <li>
+                                    <span>
+                                        Physically Challenged
+                                    </span>
+                                    <span>
+                                        {{userDetails.UserProfile.physicallyChallenged}}
+                                    </span>
+                                </li>
+                                <li>
+                                    <span>
+                                        Height (cm)
+                                    </span>
+                                    <span>
+                                        {{userDetails.UserProfile.height}}
+                                    </span>
+                                </li>
+                                <li>
+                                    <span>
+                                        Weight (kg)
+                                    </span>
+                                    <span>
+                                        {{userDetails.UserProfile.weight}}
+                                    </span>
+                                </li>
+                                <li>
+                                    <span>
+                                        Any health issues
+                                    </span>
+                                    <span>
+                                        {{userDetails.UserProfile.anyHealthIssues}}
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center" *ngIf="!userDetails.UserProfile">
+            <div class="col-xl-12">
+                <p>No User found</p>
+            </div>
+        </div>
+    </div>
+</section>

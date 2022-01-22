@@ -1,0 +1,18 @@
+.profile-section {
+    padding: 40px 0px 40px;
+}
+
+body {
+    background-color: #fafbff !important;
+}
+
+.added {
+    background: #980303 !important;
+}
+
+.iconadded {
+    background-image: linear-gradient(166deg, #fff 0%, #fff 100%) !important;
+}
+.profile-detail-pic{
+    height: 120px;
+}

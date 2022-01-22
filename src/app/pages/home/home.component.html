@@ -36,24 +36,6 @@
             </div>
           </form>          
         </div>
-        <div class="join-now-box wow fadeInUp" *ngIf="verifyOtp&&!isLoggedIn">
-          <p class="otp-message">Otp sent to registered mobile number</p>
-          <form class="forms-sample" [formGroup]="verifyFormGroup" (ngSubmit)="submitVerify()">
-            <div class="single-option">
-              <input type="password" placeholder="OTP" class="form-control" formControlName="otp" appAcceptNumberOnly>
-            </div>
-            <div class="single-option">
-              <input type="password" placeholder="Create Password" class="form-control" formControlName="password">
-            </div>
-            <div class="single-option">
-              <input type="password" placeholder="Re-Enter Password" class="form-control" formControlName="confirmPassword">
-            </div>
-            <div class="joun-button mt-4">
-              <button class="custom-button" (click)="showJoinNowSection()">Back</button>
-              <button class="custom-button ml-3" [disabled]="verifyFormGroup.invalid||(verifyFormGroup.value.password!=verifyFormGroup.value.confirmPassword)">Verify</button>
-            </div>
-          </form>          
-        </div>
       </div>
     </div>
   </div>
@@ -61,7 +43,7 @@
 <!-- ==========Banner-Section========== -->
 
 <!-- ==========Feature-Section========== -->
-<section class="feature-section" *ngIf="!userPaid">
+<section class="feature-section">
   <div class="container">
     <div class="row">
       <div class="col-lg-3 col-sm-6">
@@ -150,7 +132,7 @@
 <!-- ==========Community-Sectionn========== -->
 
 <!-- ==========How it work Section========== -->
-<section class="how-it-work-section" *ngIf="!userPaid">
+<section class="how-it-work-section">
   <img class="shape1" src="assets/images/h-it-w/circle-shape.png" alt="">
   <img class="shape2" src="assets/images/h-it-w/bird.png" alt="">
   <div class="container">
@@ -220,7 +202,7 @@
 <!-- ==========How it work Section========== -->
 
 <!-- ==========Features-Section========== -->
-<section class="feature-section extra-feature" *ngIf="!userPaid">
+<section class="feature-section extra-feature">
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-lg-6">

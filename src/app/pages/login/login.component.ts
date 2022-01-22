@@ -26,8 +26,10 @@ export class LoginComponent implements OnInit {
   }
 
   login(){
+    this.storage.addLoader.emit();
     this.http.post('api/login', this.formGroup.value).subscribe(
       (response: any)=>{
+        this.storage.removeLoader.emit();
         this.storage.setToken(response.token);
         this.storage.setUserDetails(response);
         this.router.navigateByUrl('/login');
@@ -37,6 +39,7 @@ export class LoginComponent implements OnInit {
       },
       (error: any)=>{
         this.http.errorMessage("Invalid Credentials");
+        this.storage.removeLoader.emit();
         // this.http.exceptionHandling(error);
       }
     )

@@ -54,12 +54,6 @@
                                     <li>
                                         <a [ngClass]="{'active': healthSection}" (click)="showHealth(profileView)">Health</a>
                                     </li>
-                                    <li>
-                                        <a [ngClass]="{'active': preferenceSection}" (click)="showPreference(profileView)">Preference</a>
-                                    </li>
-                                    <li>
-                                        <a [ngClass]="{'active': paymentSection}" (click)="showPayment(profileView)">Payment page</a>
-                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -153,7 +147,7 @@
                                     <div class="top-bg"></div>
                                     <div class="p-inner-content">
                                         <div class="profile-img">
-                                            <img class="w-100" src="{{imagePath}}{{profileImage}}" alt="" *ngIf="imagePath&&profileImage">
+                                            <img class="w-100 profile-page-pic" src="{{imagePath}}{{profileImage}}" alt="" *ngIf="imagePath&&profileImage">
                                             <img src="assets/images/profile/profile-user.png" alt="" *ngIf="!imagePath||!profileImage">
                                         </div>
                                     </div>
@@ -281,7 +275,7 @@
                             <div class="col-md-6">
                                 <div class="my-input-box">
                                     <label for="">Religion</label>
-                                    <select class="form-control" formControlName="religionid">
+                                    <select class="form-control" formControlName="religionid" (change)="updateReligion()">
                                         <option value="" disabled>Select Religion</option>
                                         <option *ngFor="let religion of religionLists" value="{{religion.id}}">
                                             {{religion.description}}</option>
@@ -293,7 +287,7 @@
                                     <label for="">Caste</label>
                                     <select class="form-control" formControlName="casteid">
                                         <option value="" disabled>Select Caste</option>
-                                        <option *ngFor="let caste of casteLists" value="{{caste.id}}">
+                                        <option *ngFor="let caste of casteLists|casteFilter:basicDetailsFormGroup.value.religionid" value="{{caste.id}}">
                                             {{caste.description}}</option>
                                     </select>
                                 </div>
@@ -303,6 +297,27 @@
                                     <label for="">Sub caste</label>
                                     <input type="text" class="form-control" placeholder="Sub caste"
                                         formControlName="subCaste" autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="my-input-box">
+                                    <label for="">Email</label>
+                                    <input type="text" class="form-control" placeholder="Email" formControlName="email"
+                                        autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="my-input-box">
+                                    <label for="">Alternate Mobile Number</label>
+                                    <input type="text" class="form-control" placeholder="Alternate Mobile Number"
+                                        formControlName="alternativeMobile" autocomplete="off" appAcceptNumberOnly maxlength="10">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="my-input-box">
+                                    <label for="">Aadhar Number</label>
+                                    <input type="text" class="form-control" placeholder="Aadhar Number"
+                                        formControlName="aadharnumber" autocomplete="off">
                                 </div>
                             </div>
                         </div>
@@ -407,13 +422,6 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="my-input-box">
-                                    <label>Career</label>
-                                    <input type="text" class="form-control" placeholder="Career"
-                                        formControlName="career" autocomplete="off">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="my-input-box">
                                     <label>Nationality</label>
                                     <select class="form-control" formControlName="nationality">
                                         <option value="" disabled>Select Nationality</option>
@@ -509,114 +517,10 @@
                             <div class="col-md-12">
                                 <div class="buttons">
                                     <button type="submit" class="custom-button previous" (click)="showCareer(profileView)">Back</button>
-                                    <button type="submit" class="custom-button ml-3" (click)="saveProfile('showPreference', profileView)">Save & Next</button>
+                                    <button type="submit" class="custom-button ml-3" (click)="saveProfile('showPreference', profileView)">Save</button>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="input-info-box mt-30" *ngIf="preferenceSection">
-                    <div class="header">
-                        Preference
-                    </div>
-                    <div class="content" [formGroup]="preferenceFormGroup">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="my-input-box">
-                                    <label for="">Religion</label>
-                                    <select class="form-control" formControlName="preferencereligionid">
-                                        <option value="" disabled>Select Religion</option>
-                                        <option *ngFor="let religion of religionLists" value="{{religion.id}}">
-                                            {{religion.description}}</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="my-input-box">
-                                    <label for="">Caste</label>
-                                    <select class="form-control" formControlName="preferencecasteid">
-                                        <option value="" disabled>Select Caste</option>
-                                        <option *ngFor="let caste of casteLists" value="{{caste.id}}">
-                                            {{caste.description}}</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="my-input-box">
-                                    <label for="">Mother Tongue</label>
-                                    <select class="form-control" formControlName="preferencelanguageid">
-                                        <option value="" disabled>Select Mother Tongue</option>
-                                        <option *ngFor="let language of languageLists" value="{{language.id}}">
-                                            {{language.description}}</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="my-input-box">
-                                    <label>Food Habit</label>
-                                    <select class="form-control" formControlName="preferencefoodHabit">
-                                        <option value="" disabled>Select Food Habit</option>
-                                        <option value="Veg">Veg</option>
-                                        <option value="Non-Veg">Non-Veg</option>
-                                        <option value="Only Egg">Only Egg</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">                            
-                            <div class="col-md-12">
-                                <div class="buttons">
-                                    <button type="submit" class="custom-button previous" (click)="showHealth(profileView)">Back</button>
-                                    <button type="submit" class="custom-button ml-3" (click)="saveProfile('showPayment', profileView)">Save & Next</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="input-info-box mt-30" *ngIf="paymentSection">
-                    <div class="header">
-                        Payment
-                    </div>
-                    <div class="content" [formGroup]="paymentFormGroup">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="my-input-box">
-                                    <label for="">Email</label>
-                                    <input type="text" class="form-control" placeholder="Email" formControlName="email"
-                                        autocomplete="off">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="my-input-box">
-                                    <label for="">Alternate Mobile Number</label>
-                                    <input type="text" class="form-control" placeholder="Alternate Mobile Number"
-                                        formControlName="alternativeMobile" autocomplete="off" appAcceptNumberOnly maxlength="10">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="my-input-box">
-                                    <label for="">Aadhar Number</label>
-                                    <input type="text" class="form-control" placeholder="Aadhar Number"
-                                        formControlName="aadharnumber" autocomplete="off">
-                                </div>
-                            </div>
-                            <div class="col-md-6"></div>
-                            <div class="col-md-12">
-                                <div class="buttons  mt-30">
-                                    <button type="submit" class="custom-button previous" (click)="showPreference(profileView)">Back</button>
-                                    <button type="submit" class="custom-button ml-4" (click)="payment(profileView)">Pay 1999/- for Pro-Customer</button>
-                                    <button class="custom-button2" (click)="payLater(profileView)">Pay Later</button>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- <div class="row">                            
-                            <div class="col-md-12">
-                                <div class="buttons">
-                                    <button type="submit" class="custom-button" (click)="showPreference(profileView)">Back</button>
-                                    <button type="submit" class="custom-button ml-3" (click)="saveProfile('', profileView)">Save</button>
-                                </div>
-                            </div>
-                        </div> -->
                     </div>
                 </div>
             </div>

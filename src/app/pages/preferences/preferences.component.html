@@ -1,0 +1,97 @@
+<div class="search-overlay">
+    <div class="close"><i class="fas fa-times"></i></div>
+    <form action="#">
+        <input type="text" placeholder="Write what you want..">
+    </form>
+</div>
+<!-- ==========Header-Section========== -->
+
+<!-- ==========Breadcrumb-Section========== -->
+<section class="breadcrumb-area profile-bc-area">
+    <div class="container">
+        <div class="content">
+            <h2 class="title extra-padding">
+                Preferences
+            </h2>
+        </div>
+    </div>
+</section>
+<!-- ==========Breadcrumb-Section========== -->
+
+
+<!-- ========= Profile Section Start -->
+
+<section class="user-setting-section" #profileView>
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12 col-md-12 ">
+                <div class="input-info-box mt-30">
+                    <div class="header">
+                        Preferences
+                    </div>
+                    <div class="content" [formGroup]="preferenceFormGroup">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="my-input-box">
+                                    <label for="">Religion</label>
+                                    <select class="form-control" formControlName="preferencereligionid"
+                                        (change)="updateReligion()">
+                                        <option value="" disabled>Select Religion</option>
+                                        <option *ngFor="let religion of religionLists" value="{{religion.id}}">
+                                            {{religion.description}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="my-input-box">
+                                    <label for="">Caste</label>
+                                    <select class="form-control" formControlName="preferencecasteid">
+                                        <option value="" disabled>Select Caste</option>
+                                        <option
+                                            *ngFor="let caste of casteLists|casteFilter:preferenceFormGroup.value.preferencereligionid"
+                                            value="{{caste.id}}">
+                                            {{caste.description}}</option>
+                                    </select>
+                                    <!-- <input type="text" formControlName="preferencecasteid" placeholder="Type ahead !"
+                                        (input)="suggest()">
+                                    <div class="suggestions" *ngIf="suggestions.length">
+                                        <p *ngFor="let s of suggestions">{{s.description}}</p>
+                                    </div> -->
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="my-input-box">
+                                    <label for="">Mother Tongue</label>
+                                    <select class="form-control" formControlName="preferencelanguageid">
+                                        <option value="" disabled>Select Mother Tongue</option>
+                                        <option *ngFor="let language of languageLists" value="{{language.id}}">
+                                            {{language.description}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="my-input-box">
+                                    <label>Food Habit</label>
+                                    <select class="form-control" formControlName="preferencefoodHabit">
+                                        <option value="" disabled>Select Food Habit</option>
+                                        <option value="Veg">Veg</option>
+                                        <option value="Non-Veg">Non-Veg</option>
+                                        <option value="Only Egg">Only Egg</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="buttons">
+                                    <button type="submit" class="custom-button ml-3"
+                                        (click)="profileUpdate(profileView)">Update</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -21,7 +21,7 @@
                 <div class="log-reg-inner">
                     <div class="section-header inloginp">
                         <h2 class="title">
-                            Welcome to ShaadiGuru
+                            Welcome to ShaadiGuru <img src="{{previewImage}}" class="profile-preview-image" *ngIf="previewImage">
                         </h2>
                     </div>
                     <div class="main-content inloginp">
@@ -68,7 +68,7 @@
                                 <div class="col-lg-4">
                                     <div class="form-group">
                                         <label for="">DOB</label>
-                                        <input type="date" class="form-control" formControlName="dob">
+                                        <input type="date" class="form-control" formControlName="dob" [max]="today">
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
@@ -89,8 +89,18 @@
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="form-group">
+                                        <label for="">Mother Tongue</label>
+                                        <select class="form-control" formControlName="languageid">
+                                            <option value="" disabled>Select Mother Tongue</option>
+                                            <option *ngFor="let language of languageLists" value="{{language.id}}">
+                                                {{language.description}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group">
                                         <label for="">Religion</label>
-                                        <select class="form-control" formControlName="religionid">
+                                        <select class="form-control" formControlName="religionid" (change)="updateReligion()">
                                             <option value="" disabled>Select Religion</option>
                                             <option *ngFor="let religion of religionLists" value="{{religion.id}}">
                                                 {{religion.description}}</option>
@@ -102,7 +112,7 @@
                                         <label for="">Caste</label>
                                         <select class="form-control" formControlName="casteid">
                                             <option value="" disabled>Select Caste</option>
-                                            <option *ngFor="let caste of casteLists" value="{{caste.id}}">
+                                            <option *ngFor="let caste of casteLists|casteFilter:formGroup.value.religionid" value="{{caste.id}}">
                                                 {{caste.description}}</option>
                                         </select>
                                     </div>
@@ -213,7 +223,7 @@
                     formControlName="password">
                 </div> -->
                             <div class="button-wrapper" *ngIf="!showOtp">
-                                <button type="submit" class="custom-button" (click)="verifyotp()">Send Otp</button>
+                                <button type="submit" class="custom-button" (click)="verifyotp()" [ngClass]="{'disabled':formGroup.invalid }" [disabled]="formGroup.invalid">Send Otp</button>
                             </div>
                             <div class="button-wrapper" *ngIf="showOtp">
                                 <button class="custom-button" (click)="verify()" [ngClass]="{'disabled':formGroup.invalid }" [disabled]="formGroup.invalid">Register Now</button>

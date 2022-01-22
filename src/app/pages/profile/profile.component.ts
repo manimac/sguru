@@ -26,7 +26,10 @@ export class ProfileComponent implements OnInit {
     religionid: new FormControl(''),
     casteid: new FormControl(''),
     subCaste: new FormControl(''),
-    image: new FormControl('')
+    image: new FormControl(''),
+    email: new FormControl(''),
+    alternativeMobile: new FormControl(''),
+    aadharnumber: new FormControl('')
   })
   careerFormGroup: FormGroup = new FormGroup({
     maritialStatus: new FormControl(''),
@@ -50,17 +53,11 @@ export class ProfileComponent implements OnInit {
     weight: new FormControl(''),
     anyHealthIssues: new FormControl('')
   })
-  preferenceFormGroup: FormGroup = new FormGroup({
-    preferencereligionid: new FormControl(''),
-    preferencecasteid: new FormControl(''),
-    preferencelanguageid: new FormControl(''),
-    preferencefoodHabit: new FormControl('')
-  })
-  paymentFormGroup: FormGroup = new FormGroup({
-    email: new FormControl(''),
-    alternativeMobile: new FormControl(''),
-    aadharnumber: new FormControl('')
-  });
+  // paymentFormGroup: FormGroup = new FormGroup({
+  //   email: new FormControl(''),
+  //   alternativeMobile: new FormControl(''),
+  //   aadharnumber: new FormControl('')
+  // });
   languageLists: any = [];
   religionLists: any = [];
   casteLists: any = [];
@@ -74,8 +71,6 @@ export class ProfileComponent implements OnInit {
   basicDetailsSection: boolean = true;
   careerSection: boolean = false;
   healthSection: boolean = false;
-  preferenceSection: boolean = false;
-  paymentSection: boolean = false;
   userDetails: any = {};
   imagePath: any = '';
   profileImage: any = '';
@@ -133,8 +128,6 @@ export class ProfileComponent implements OnInit {
     this.basicDetailsSection = true;
     this.careerSection = false;
     this.healthSection = false;
-    this.preferenceSection = false;
-    this.paymentSection = false;
     element.scrollIntoView();
   }
 
@@ -142,8 +135,6 @@ export class ProfileComponent implements OnInit {
     this.basicDetailsSection = false;
     this.careerSection = true;
     this.healthSection = false;
-    this.preferenceSection = false;
-    this.paymentSection = false;
     element.scrollIntoView();
   }
 
@@ -151,8 +142,6 @@ export class ProfileComponent implements OnInit {
     this.basicDetailsSection = false;
     this.careerSection = false;
     this.healthSection = true;
-    this.preferenceSection = false;
-    this.paymentSection = false;
     element.scrollIntoView();
   }
 
@@ -160,8 +149,6 @@ export class ProfileComponent implements OnInit {
     this.basicDetailsSection = false;
     this.careerSection = false;
     this.healthSection = false;
-    this.preferenceSection = true;
-    this.paymentSection = false;
     element.scrollIntoView();
   }
 
@@ -169,13 +156,12 @@ export class ProfileComponent implements OnInit {
     this.basicDetailsSection = false;
     this.careerSection = false;
     this.healthSection = false;
-    this.preferenceSection = false;
-    this.paymentSection = true;
     element.scrollIntoView();
   }
 
   loadProfile() {
     let userid = this.storage.getUserid();
+    this.storage.addLoader.emit();
     this.http.post('user/profileView', { filterSearch: userid }).subscribe(
       (response: any) => {
         if (response.data && Array.isArray(response.data) && (response.data.length > 0)) {
@@ -223,13 +209,6 @@ export class ProfileComponent implements OnInit {
             anyHealthIssues: this.userDetails.UserProfile ? this.userDetails.UserProfile.anyHealthIssues : ''
           }
           this.healthFormGroup.patchValue(params3);
-          let params4: any = {
-            preferencereligionid: (this.userDetails.UserProfile&&this.userDetails.UserProfile.preferencereligion) ? this.userDetails.UserProfile.preferencereligion.id : '',
-            preferencecasteid: (this.userDetails.UserProfile&&this.userDetails.UserProfile.preferencecaste) ? this.userDetails.UserProfile.preferencecaste.id : '',
-            preferencelanguageid: (this.userDetails.UserProfile&&this.userDetails.UserProfile.preferencelanguage) ? this.userDetails.UserProfile.preferencelanguage.id : '',
-            preferencefoodHabit: this.userDetails.UserProfile ? this.userDetails.UserProfile.preferencefoodHabit : ''
-          }
-          this.preferenceFormGroup.patchValue(params4);
           let email: any = '';
           if(this.userDetails.email=='yyyyyy@gmail.com' || this.userDetails.email=='yyyyyy@gmail.com'){
             email = '';
@@ -242,12 +221,14 @@ export class ProfileComponent implements OnInit {
             alternativeMobile: this.userDetails.alternativeMobile,
             aadharnumber: this.userDetails.UserProfile ? this.userDetails.UserProfile.aadharnumber : ''
           };
-          this.paymentFormGroup.patchValue(params5);
+          this.basicDetailsFormGroup.patchValue(params5);
           this.imagePath = this.userDetails.path ? this.userDetails.path : '';
         }
+        this.storage.removeLoader.emit();
       },
       (error: any) => {
         this.http.exceptionHandling(error);
+        this.storage.removeLoader.emit();
       }
     )
   }
@@ -267,6 +248,10 @@ export class ProfileComponent implements OnInit {
     this.saveProfile('paynow', element);
   }
 
+  updateReligion(){
+    this.basicDetailsFormGroup.patchValue({casteid: ''});
+  }
+
   // removeFile(element: HTMLElement){
   //   this.basicDetailsFormGroup.patchValue({
   //     image: ''
@@ -279,16 +264,19 @@ export class ProfileComponent implements OnInit {
       firstname: this.basicDetailsFormGroup.value.firstname,
       lastname: this.basicDetailsFormGroup.value.lastname,
       phone: this.basicDetailsFormGroup.value.phone,
-      email: this.paymentFormGroup.value.email,
-      alternativeMobile: this.paymentFormGroup.value.alternativeMobile,
+      email: this.basicDetailsFormGroup.value.email,
+      alternativeMobile: this.basicDetailsFormGroup.value.alternativeMobile,
       id: this.storage.getUserid()
     }
+    this.storage.addLoader.emit();
     this.http.post('user/updateUser', params).subscribe(
       (response: any) => {
+        this.storage.removeLoader.emit();
         this.profileUpdate(event, element);
       },
       (error: any) => {
         this.http.exceptionHandling(error);
+        this.storage.removeLoader.emit();
       }
     )
   }
@@ -326,11 +314,8 @@ export class ProfileComponent implements OnInit {
     _form.append('height', this.healthFormGroup.value['height']);
     _form.append('weight', this.healthFormGroup.value['weight']);
     _form.append('anyHealthIssues', this.healthFormGroup.value['anyHealthIssues']);
-    _form.append('preferencelanguageid', this.preferenceFormGroup.value['preferencelanguageid']);
-    _form.append('preferencereligionid', this.preferenceFormGroup.value['preferencereligionid']);
-    _form.append('preferencecasteid', this.preferenceFormGroup.value['preferencecasteid']);
-    _form.append('preferencefoodHabit', this.preferenceFormGroup.value['preferencefoodHabit']);
-    _form.append('aadharnumber', this.paymentFormGroup.value['aadharnumber']);
+    _form.append('aadharnumber', this.basicDetailsFormGroup.value['aadharnumber']);
+    this.storage.addLoader.emit();
     this.http.post('user/updateProfile', _form).subscribe(
       (response: any) => {
         this.loadProfile();
@@ -339,25 +324,15 @@ export class ProfileComponent implements OnInit {
         }
         else if(event == 'showHealth'){
           this.showHealth(element);
-        }
+        }      
         else if(event == 'showPreference'){
-          this.showPreference(element);
-        }
-        else if(event == 'showPayment'){
-          this.showPayment(element);
-        }
-        else if(event == 'paylater' || event == 'paynow'){
-          this.router.navigate(['/']);
-        }
-        if(event != 'paylater' || event != 'paynow'){
-          this.http.successMessage("Profile Updated Successfully");
-        }        
-        else if(event == 'paynow'){
-          this.http.successMessage("Payment Updated Successfully");
-        }        
+          this.http.successMessage("Profile updated Successfully");
+        }      
+        this.storage.removeLoader.emit();
       },
       (error: any) => {
         this.http.exceptionHandling(error);
+        this.storage.removeLoader.emit();
       }
     )
   }

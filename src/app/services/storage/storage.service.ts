@@ -1,10 +1,12 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StorageService {
 
+  addLoader: EventEmitter<any> = new EventEmitter();
+  removeLoader: EventEmitter<any> = new EventEmitter();
   constructor() { }
 
   setToken(params: any){
@@ -75,5 +77,13 @@ export class StorageService {
       result = true;
     }
     return result;
+  }
+
+  setPrime(){
+    let userDetails: any = this.getUserDetails();
+    if(userDetails.status!=3){
+      userDetails.status = 3;
+    }
+    this.setUserDetails(userDetails);
   }
 }

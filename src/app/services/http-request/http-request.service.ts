@@ -61,8 +61,22 @@ export class HttpRequestService {
   }
 
   sendOtpSms(phone: any, firstname: any, currentOtp: any) {
-    let url = `http://www.smsintegra.com/api/smsapi.aspx?uid=shaadhiguru&pwd=11985&mobile=` + phone + `&msg=Dear%20` + firstname + `,%20Your%20mobile%20number%20verification%20PIN%20is%20` + currentOtp + `%20-%20www.shaadhiguru.com%20Modern%20Office&sid=FrmShG&type=0&dtTimeNow=xxxxx&entityid=1601414164024691516&tempid=1607100000000180311`
-    this.sendSms(url).subscribe(
+    // let baseurl = ``;
+    // if(location.protocol == 'https:'){
+    //   baseurl = `https://www.smsintegra.net/`;
+    // }
+    // else{
+    //   baseurl = `http://www.smsintegra.com/`;
+    // }
+    // let url = baseurl + `api/smsapi.aspx?uid=shaadhiguru&pwd=11985&mobile=` + phone + `&msg=Dear%20` + firstname + `,%20Your%20mobile%20number%20verification%20PIN%20is%20` + currentOtp + `%20-%20www.shaadhiguru.com%20Modern%20Office&sid=FrmShG&type=0&dtTimeNow=xxxxx&entityid=1601414164024691516&tempid=1607100000000180311`
+    let params = {
+      phone: phone,
+      firstname: firstname,
+      currentOtp: currentOtp,
+      protocol: location.protocol,
+    }
+    this.post('sendsms', params).subscribe(
+    // this.sendSms(url).subscribe(
       (response: any) => {
       },
       (error: any) => {

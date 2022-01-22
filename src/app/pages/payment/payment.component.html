@@ -1,0 +1,114 @@
+<section class="breadcrumb-area profile-bc-area">
+    <div class="container">
+        <div class="content">
+            <h2 class="title extra-padding">
+                Payment
+            </h2>
+        </div>
+    </div>
+</section>
+  
+  <!-- ==========Features-Section========== -->
+  <section class="feature-section extra-feature">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-6">
+          <div class="content">
+            <div class="section-header" *ngIf="userDetails.status!=3">
+              <h6 class="sub-title wow fadeInUp">
+                An Exhaustive List Of
+              </h6>
+              <h2 class="title extra-padding wow fadeInUp">
+                Amazing Features
+              </h2>
+              <p class="text">
+                To find meaningful connections, dates, and life partners.
+              </p>
+            </div>
+            <div class="section-header" *ngIf="userDetails.status==3">
+              <h2 class="title extra-padding wow fadeInUp">
+                You have already subscribed
+              </h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="main-content-area" *ngIf="userDetails.status!=3">
+      <div class="left-image">
+        <div class="offer">
+          <div class="offer-inner-content" (click)="payNow()">
+            <span class="fs">Click now to Pay</span>
+            <h2 *ngIf="amount">
+              Rs. {{amount}}
+            </h2>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row justify-content-end">
+          <div class="col-lg-5">
+            <div class="feature-lists">
+              <div class="single-feature-list wow fadeInUp" data-wow-delay="0.1s">
+                <div class="icon">
+                  <img src="assets/images/feature/i1.png" alt="">
+                </div>
+                <div class="content">
+                  <h4 class="title">
+                    Simple to use
+                  </h4>
+                  <p>
+                    Simple steps to follow to have a matching
+                    connection.
+                  </p>
+                </div>
+              </div>
+              <div class="single-feature-list wow fadeInUp" data-wow-delay="0.2s">
+                <div class="icon">
+                  <img src="assets/images/feature/i2.png" alt="">
+                </div>
+                <div class="content">
+                  <h4 class="title">
+                    Smart Matching
+                  </h4>
+                  <p>
+                    Simple steps to follow to have a matching
+                    connection.
+                  </p>
+                </div>
+              </div>
+              <div class="single-feature-list wow fadeInUp" data-wow-delay="0.3s">
+                <div class="icon">
+                  <img src="assets/images/feature/i3.png" alt="">
+                </div>
+                <div class="content">
+                  <h4 class="title">
+                    Filter very fast
+                  </h4>
+                  <p>
+                    Simple steps to follow to have a matching
+                    connection.
+                  </p>
+                </div>
+              </div>
+              <div class="single-feature-list wow fadeInUp" data-wow-delay="0.4s">
+                <div class="icon">
+                  <img src="assets/images/feature/i4.png" alt="">
+                </div>
+                <div class="content">
+                  <h4 class="title">
+                    Cool community
+                  </h4>
+                  <p>
+                    Simple steps to follow to have a matching
+                    connection.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ==========Features-Section========== -->
