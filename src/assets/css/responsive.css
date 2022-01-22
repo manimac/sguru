@@ -1329,3 +1329,17 @@
         height: calc(100vh - 65px);
     }
 }
+
+//New CSS
+@media screen and (max-width: 991px) {
+  .log-reg { background-color: #FFFFFF; }
+  .log-reg .log-reg-inner {padding-left: 0px;}
+  .log-reg .log-reg-inner .main-content .or-content .or-signup a{color: #000;}
+  .log-reg .log-reg-inner .main-content .or-content p{color: #000;}
+  .log-reg .log-reg-inner .main-content .f-pass a{color: #000;}
+}
+
+
+.log-reg .log-reg-inner .main-content .custom-button{text-transform: uppercase;}
+.header-section{background: #e35757;}
+.log-reg .log-reg-inner{padding-left: 0px;}
