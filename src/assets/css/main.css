@@ -10085,7 +10085,7 @@ input[type=submit] {
 
 /*New Theme CSS*/
 
-.forms-sample .single-option .mr-3{width: 50%;}
+.forms-sample .single-option .mr-3{ }
 .single-community-box .img {overflow: hidden;max-height: 400px;}
 .profile-section .left-profile-area .profile-about-box .top-bg{background: #e35757; border-radius: 0 0 50% 50%;}
 .log-reg .log-reg-inner .main-content .custom-button{text-transform: uppercase;}
