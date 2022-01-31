@@ -10093,3 +10093,45 @@ input[type=submit] {
 .log-reg .log-reg-inner{padding-left: 0px;}
 
 
+
+/*Profile CSS*/
+.community-section.inner-page .single-friend .content .connnect-btn {
+    position: absolute;
+    bottom: 0px;
+    -webkit-transform: translateY(0%);
+    -ms-transform: translateY(0%);
+    transform: translateY(0%);
+    right: 0px;
+    z-index: 1;
+    -webkit-box-flex: 16px;
+    -ms-flex: 16px;
+    flex: 16px;
+    color: #333;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    padding: 12px 18px;
+    border-radius: 50px;
+}
+
+.community-section.inner-page .single-friend .location i {
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-image: -o-linear-gradient(284deg, #f22876 0%, #942dd9 100%);
+    background-image: linear-gradient(166deg, #f22876 0%, #942dd9 100%);
+    margin-right: 4px;
+}
+
+.community-section.inner-page .single-friend img {
+    max-width: 150px;
+    margin-right: 20px;
+    border-radius: 30px 0 30px 0;
+}
+
+.community-section.inner-page .single-friend .content p {
+    margin-bottom: 5px;
+}
+.community-section.inner-page .single-friend .content .details{ padding:0px; }
+.community-section.inner-page .single-friend .content p.age{}
+.community-section.inner-page .single-friend .content p.company{}
+.community-section.inner-page .single-friend .content p.cast{}
+
+
