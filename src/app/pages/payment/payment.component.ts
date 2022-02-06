@@ -84,14 +84,31 @@ export class PaymentComponent implements OnInit {
     }
     this.http.post('order/createOrder', params).subscribe(
       (response: any) => {
+        let obj = {
+          phone: this.userDetails.phone,
+          firstname: this.userDetails.firstname,
+          invoice: paymentid,
+          price: this.amount
+        }
+        this.paidSMS(obj);
         this.storage.setPrime();
-            this.http.successMessage("Payment Successfully");
-            setTimeout(() => {
-              location.reload();
-            })
+        this.http.successMessage("Payment Successfully");
+        setTimeout(() => {
+          location.reload();
+        })
       },
       (error: any) => {
         this.http.exceptionHandling(error);
+      }
+    )
+  }
+
+  paidSMS(params: any) {
+    this.http.post('sendPaidsms', params).subscribe(
+      (response: any) => {
+        
+      },
+      (error: any) => {
       }
     )
   }

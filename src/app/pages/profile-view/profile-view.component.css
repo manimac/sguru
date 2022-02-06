@@ -1,0 +1,8 @@
+.profile-name:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+.profile-phone small{
+    text-decoration: underline;
+    cursor: pointer;
+}

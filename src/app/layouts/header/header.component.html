@@ -15,8 +15,8 @@
                 <li *ngIf="isLoggedIn">
                     <a href="javascript:void(0);" routerLink="/inbox" [ngClass]="{'active':router.url=='/inbox'}">Inbox</a>
                 </li>
-                <li *ngIf="isLoggedIn">
-                    <a href="javascript:void(0);" routerLink="/payment">Payment</a>
+                <li *ngIf="isLoggedIn&&userDetails.status!=3">
+                    <a href="javascript:void(0);" routerLink="/upgrade">Upgrade</a>
                 </li>
                 <li *ngIf="isLoggedIn">
                     <a href="javascript:void(0);" routerLink="/preferences" [ngClass]="{'active':router.url=='/preferences'}">Preferences</a>

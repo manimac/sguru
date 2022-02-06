@@ -22,7 +22,7 @@ const routes: Routes = [
   { path: 'inbox', component: InboxComponent, canActivate: [AuthGuardService] },
   { path: 'profile-detail', component: ProfileDetailComponent, canActivate: [AuthGuardService] },
   { path: 'preferences', component: PreferencesComponent, canActivate: [AuthGuardService] },
-  { path: 'payment', component: PaymentComponent, canActivate: [AuthGuardService] },
+  { path: 'upgrade', component: PaymentComponent, canActivate: [AuthGuardService] },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'about-us', component: AboutComponent },

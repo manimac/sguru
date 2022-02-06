@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HttpRequestService } from 'src/app/services/http-request/http-request.service';
 import { StorageService } from 'src/app/services/storage/storage.service';
 
@@ -20,7 +20,8 @@ export class HomeComponent implements OnInit {
   })
   isLoggedIn: boolean = false;
   dataLists: any = [];
-  constructor(private router: Router, private http: HttpRequestService, private storage: StorageService) {
+  empid: any;
+  constructor(private router: Router, private http: HttpRequestService, private storage: StorageService, private route: ActivatedRoute) {
     if (this.storage.getToken()) {
       this.isLoggedIn = true;
       this.router.navigate(['/inbox']);
@@ -29,6 +30,9 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.route.queryParams.subscribe(params => {
+      this.empid = params['empid'];
+    });
   }
 
   getAge(dateString: any) {
@@ -62,7 +66,13 @@ export class HomeComponent implements OnInit {
           status: 2
         };
         localStorage.setItem('signup-user', JSON.stringify(params));
-        this.router.navigate(['/register']);
+        if(this.empid){
+          this.router.navigate(['/register'], { queryParams: {empid: this.empid}});
+        }
+        else{
+          this.router.navigate(['/register']);
+        }
+        
       },
       (error: any) => {
         this.http.exceptionHandling(error);

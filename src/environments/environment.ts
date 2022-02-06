@@ -6,10 +6,11 @@ export const environment = {
   production: false,
   // baseurl: 'http://localhost:8082/sguru/',
   // authurl: 'http://localhost:8082/sguru/api/',
+  // paymentKey: 'rzp_live_XpMETHw5ca4q81',
   paymentKey: 'rzp_test_9qR8RzZG4U4r5e',
   // paymentKey: 'rzp_test_vfHKuuvGQC9BQr'
-  baseurl: 'https://hinkeawebsolutions.in/sguru/',
-  authurl: 'https://hinkeawebsolutions.in/sguru/api/'
+  baseurl: 'https://shaadhiguru.com/sguru/',
+  authurl: 'https://shaadhiguru.com/sguru/api/'
 };
 
 /*

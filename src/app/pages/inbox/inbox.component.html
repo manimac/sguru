@@ -1,143 +1,31 @@
 <section class="breadcrumb-area profile-bc-area">
-    <div class="container">
-        <div class="content">
-            <h2 class="title extra-padding">
-                Inbox
-            </h2>
-        </div>
+  <div class="container">
+    <div class="content">
+      <h2 class="title extra-padding">
+        Inbox
+      </h2>
     </div>
+  </div>
 </section>
 <section class="community-section inner-page mt-2">
-    <div class="container">
-      <div>
-        <tabset #staticTabs>
-          <tab heading="All" (selectTab)="loadProfiles('all')">
-            <div class="row mt-4" *ngIf="dataLists&&dataLists.length>0">
-              <div class="col-lg-4 col-md-6 cursor-pointer" *ngFor="let data of dataLists" routerLink="/profile-detail" [queryParams]="{profile: data.id}">
-                <div class="single-community-box">
-                  <div class="img">
-                    <img class="max-200" src="assets/images/cummunity/img5.png" alt="" *ngIf="!data.path||!data.UserProfile||!data.UserProfile.image">
-                    <img class="max-200" src="{{data.path}}{{data.UserProfile.image}}" alt="" *ngIf="data.path&&data.UserProfile&&data.UserProfile.image">
-                  </div>
-                  <div class="content">
-                    <!-- <p class="date">
-                      6 days ago
-                    </p> -->
-                    <a href="javascript:void(0)" class="title" routerLink="/profile-detail" [queryParams]="{profile: data.id}">
-                      {{data.firstname}}
-                    </a>
-                    <p class="text" *ngIf="data.UserProfile">
-                      <span [innerHtml]="getAge(data.UserProfile.dob)"></span> || {{data.UserProfile.annualincome ? data.UserProfile.annualincome : 'Not Mentioned'}}
-                    </p>
-                    <p class="text" *ngIf="data.UserProfile.Caste">
-                      {{data.UserProfile.Caste.description}}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="row mt-4" *ngIf="dataLists.length==0">
-              <div class="col-lg-12">
-                <h3 class="text-center">No profiles found</h3>
-              </div>
-            </div>
-          </tab>
-          <tab heading="My Matches" (selectTab)="loadProfiles('mymatches')">
-            <div class="row mt-4" *ngIf="dataLists&&dataLists.length>0">
-              <div class="col-lg-4 col-md-6" *ngFor="let data of dataLists" routerLink="/profile-detail" [queryParams]="{profile: data.id}">
-                <div class="single-community-box">
-                  <div class="img">
-                    <img class="max-200" src="assets/images/cummunity/img5.png" alt="" *ngIf="!data.path||!data.UserProfile||!data.UserProfile.image">
-                    <img class="max-200" src="{{data.path}}{{data.UserProfile.image}}" alt="" *ngIf="data.path&&data.UserProfile&&data.UserProfile.image">
-                  </div>
-                  <div class="content">
-                    <!-- <p class="date">
-                      6 days ago
-                    </p> -->
-                    <a href="javascript:void(0);" class="title">
-                      {{data.firstname}}
-                    </a>
-                    <p class="text" *ngIf="data.UserProfile">
-                      <span [innerHtml]="getAge(data.UserProfile.dob)"></span> || {{data.UserProfile.annualincome ? data.UserProfile.annualincome : 'Not Mentioned'}}
-                    </p>
-                    <p class="text" *ngIf="data.UserProfile.Caste">
-                      {{data.UserProfile.Caste.description}}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="row mt-4" *ngIf="dataLists.length==0">
-              <div class="col-lg-12">
-                <h3 class="text-center">No profiles found</h3>
-              </div>
-            </div>
-          </tab>
-          <tab heading="My Favourites" (selectTab)="loadProfiles('favourite')">
-            <div class="row mt-4" *ngIf="dataLists&&dataLists.length>0">
-              <div class="col-lg-4 col-md-6" *ngFor="let data of dataLists" routerLink="/profile-detail" [queryParams]="{profile: data.id}">
-                <div class="single-community-box">
-                  <div class="img">
-                    <img class="max-200" src="assets/images/cummunity/img5.png" alt="" *ngIf="!data.path||!data.UserProfile||!data.UserProfile.image">
-                    <img class="max-200" src="{{data.path}}{{data.UserProfile.image}}" alt="" *ngIf="data.path&&data.UserProfile&&data.UserProfile.image">
-                  </div>
-                  <div class="content">
-                    <!-- <p class="date">
-                      6 days ago
-                    </p> -->
-                    <a href="javascript:void(0);" class="title">
-                      {{data.firstname}}
-                    </a>
-                    <p class="text" *ngIf="data.UserProfile">
-                      <span [innerHtml]="getAge(data.UserProfile.dob)"></span> || {{data.UserProfile.annualincome ? data.UserProfile.annualincome : 'Not Mentioned'}}
-                    </p>
-                    <p class="text" *ngIf="data.UserProfile.Caste">
-                      {{data.UserProfile.Caste.description}}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="row mt-4" *ngIf="dataLists.length==0">
-              <div class="col-lg-12">
-                <h3 class="text-center">No profiles found</h3>
-              </div>
-            </div>
-          </tab>
-          <tab heading="Not Interested" (selectTab)="loadProfiles('notinterested')">
-            <div class="row mt-4" *ngIf="dataLists&&dataLists.length>0">
-              <div class="col-lg-4 col-md-6" *ngFor="let data of dataLists" routerLink="/profile-detail" [queryParams]="{profile: data.id}">
-                <div class="single-community-box">
-                  <div class="img">
-                    <img class="max-200" src="assets/images/cummunity/img5.png" alt="" *ngIf="!data.path||!data.UserProfile||!data.UserProfile.image">
-                    <img class="max-200" src="{{data.path}}{{data.UserProfile.image}}" alt="" *ngIf="data.path&&data.UserProfile&&data.UserProfile.image">
-                  </div>
-                  <div class="content">
-                    <!-- <p class="date">
-                      6 days ago
-                    </p> -->
-                    <a href="javascript:void(0);" class="title">
-                      {{data.firstname}}
-                    </a>
-                    <p class="text" *ngIf="data.UserProfile">
-                      <span [innerHtml]="getAge(data.UserProfile.dob)"></span> || {{data.UserProfile.annualincome ? data.UserProfile.annualincome : 'Not Mentioned'}}
-                    </p>
-                    <p class="text" *ngIf="data.UserProfile.Caste">
-                      {{data.UserProfile.Caste.description}}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="row mt-4" *ngIf="dataLists.length==0">
-              <div class="col-lg-12">
-                <h3 class="text-center">No profiles found</h3>
-              </div>
-            </div>
-          </tab>
-        </tabset>
-      </div>
-       
-      
+  <div class="container">
+    <div>
+      <tabset #staticTabs>
+        <tab heading="All" (selectTab)="loadProfiles('all')">
+          <app-profile-view [dataLists]="dataLists"></app-profile-view>
+        </tab>
+        <tab heading="My Matches" (selectTab)="loadProfiles('mymatches')">
+          <app-profile-view [dataLists]="dataLists"></app-profile-view>
+        </tab>
+        <tab heading="My Favourites" (selectTab)="loadProfiles('favourite')">
+          <app-profile-view [dataLists]="dataLists"></app-profile-view>
+        </tab>
+        <tab heading="Not Interested" (selectTab)="loadProfiles('notinterested')">
+          <app-profile-view [dataLists]="dataLists"></app-profile-view>
+        </tab>
+      </tabset>
     </div>
-  </section>
+
+
+  </div>
+</section>

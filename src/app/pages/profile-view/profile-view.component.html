@@ -1,0 +1,51 @@
+<div class="row mt-4" *ngIf="dataLists&&dataLists.length>0">
+    <div class="col-lg-6 col-md-6 col-sm-12" *ngFor="let data of dataLists">
+        <div class="single-friend">
+            <img src="{{data.path}}{{data.UserProfile.image}}" class="cursor-pointer" alt="{{data.firstname}}"
+                *ngIf="data.path&&data.UserProfile&&data.UserProfile.image" routerLink="/profile-detail"
+                [queryParams]="{profile: data.id}">
+            <div class="content">
+                <div class="col-sm-12 col-md-12 details" *ngIf="data.UserProfile">
+                    <small>{{data.profileId}}</small>
+                    <h5 routerLink="/profile-detail"
+                    [queryParams]="{profile: data.id}" class="profile-name">{{data.firstname}}</h5>
+                    <p class="age">
+                        <span [innerHtml]="getAge(data.UserProfile.dob)"></span>
+                        <span *ngIf="data.UserProfile.height"> / {{data.UserProfile.height}}"</span>
+                        <span *ngIf="data.UserProfile.educational"> / {{data.UserProfile.educational}}</span>
+                        <span *ngIf="data.UserProfile.educationalOption"> / {{data.UserProfile.educationalOption}}</span>,
+                    </p>
+                    <p class="age">
+                        <span *ngIf="data.UserProfile.Religion">{{data.UserProfile.Religion.description}}</span>
+                        <span *ngIf="data.UserProfile.Language"> / {{data.UserProfile.Language.description}}</span>
+                        <span *ngIf="data.UserProfile.Caste"> / {{data.UserProfile.Caste.description}}</span>
+                        <span *ngIf="data.UserProfile.subCaste"> / {{data.UserProfile.subCaste}}</span>
+                        <span *ngIf="data.UserProfile.foodHabit"> / {{data.UserProfile.foodHabit}}</span>,
+                    </p>
+                    <p class="age">
+                        <span *ngIf="data.UserProfile.annualincome">{{data.UserProfile.annualincome}} PA</span>
+                        <span *ngIf="data.UserProfile.occupation"> / {{data.UserProfile.occupation}}</span>
+                        <span *ngIf="data.UserProfile.career"> / {{data.UserProfile.career}}</span>,
+                    </p>
+                    <p class="age">
+                        <span *ngIf="data.UserProfile.maritialStatus">{{data.UserProfile.maritialStatus}}</span>
+                        <span *ngIf="data.UserProfile.childrens"> - {{data.UserProfile.childrens}}</span>
+                        <span *ngIf="data.UserProfile.city"> / {{data.UserProfile.city}}</span>
+                        <span *ngIf="data.UserProfile.state">, {{data.UserProfile.state}}</span>
+                    </p>
+                    <p class="age profile-phone">
+                        <span [innerHtml]="getPhone(data.phone)"></span>
+                        <br>
+                        <small>Click to View Mobile Number</small>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4" *ngIf="dataLists.length==0">
+    <div class="col-lg-12">
+        <h3 class="text-center">No profiles found</h3>
+    </div>
+</div>

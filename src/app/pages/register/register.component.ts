@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HttpRequestService } from 'src/app/services/http-request/http-request.service';
 import { StorageService } from 'src/app/services/storage/storage.service';
 // import {AgmMap, MapsAPILoader  } from '@agm/core';  
@@ -45,7 +45,8 @@ export class RegisterComponent implements OnInit {
   currentOtp: any;
   today: any = new Date();
   previewImage: any = '';
-  constructor(private storage: StorageService, private router: Router, private http: HttpRequestService
+  empid: any;
+  constructor(private storage: StorageService, private router: Router, private http: HttpRequestService, private route: ActivatedRoute
     // , private apiloader: MapsAPILoader
   ) {
     if (this.storage.getToken()) {
@@ -67,6 +68,15 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.route.queryParams.subscribe(params => {
+      let empid = params['empid'];
+      if(empid){
+        let str = empid.split("E");
+        if(str && str.length>0){
+          this.empid = str[1];
+        }
+      }
+    });
     this.Initialize();
     // this.get();
   }
@@ -241,13 +251,14 @@ export class RegisterComponent implements OnInit {
           password: this.formGroup.value.password,
           email: 'yyyyyy@gmail.com',
           status: 2,
-          assignedby: assignedby,
+          assignedby: this.empid ? this.empid : assignedby,
           nextcall: nextCall
         };
         this.http.postAuth('signup-user', params).subscribe(
           (response: any) => {
             this.storage.setToken(response.user.token);
             this.storage.setUserDetails(response.user);
+            this.registerSMS(response.user);
             this.profileCreate(response.userid, assignedby);
           },
           (error: any) => {
@@ -259,7 +270,20 @@ export class RegisterComponent implements OnInit {
         this.http.exceptionHandling(error);
       }
     )
+  }
 
+  registerSMS(params: any){
+    let obj = {
+      phone: params.phone,
+      firstname: params.firstname,
+      profileId: "SG" + params.id
+    }
+    this.http.post('sendRegistrationsms', obj).subscribe(
+      (response: any) => {
+      },
+      (error: any) => {
+      }
+    )
   }
 
   updateReligion() {
@@ -305,7 +329,7 @@ export class RegisterComponent implements OnInit {
   createHistory(userid: any, assignedby: any) {
     let nextCall = this.formatDate(new Date());
     let params = {
-      employee: assignedby,
+      employee: this.empid ? this.empid : assignedby,
       callbackstatus: '',
       nextcall: nextCall,
       remarks: '',

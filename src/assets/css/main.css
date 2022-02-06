@@ -5917,7 +5917,7 @@ input[type=submit] {
   -ms-grid-row-align: center;
   align-self: center;
   position: relative;
-  padding-right: 150px;
+  padding-right: 20px;
 }
 
 .community-section.inner-page .single-friend .content .name {

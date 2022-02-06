@@ -26,6 +26,7 @@ import { AboutComponent } from './pages/cms/about/about.component';
 import { PrivacyPolicyComponent } from './pages/cms/privacy-policy/privacy-policy.component';
 import { CasteFilterPipe } from './pipes/caste-filter.pipe';
 import { ContactUsComponent } from './pages/cms/contact-us/contact-us.component';
+import { ProfileViewComponent } from './pages/profile-view/profile-view.component';
 // import { AgmCoreModule  } from '@agm/core';  
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { ContactUsComponent } from './pages/cms/contact-us/contact-us.component'
     AboutComponent,
     PrivacyPolicyComponent,
     CasteFilterPipe,
-    ContactUsComponent
+    ContactUsComponent,
+    ProfileViewComponent
   ],
   imports: [
     BrowserModule,
